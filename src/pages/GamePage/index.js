@@ -17,19 +17,36 @@ import './GamePage.scss'
 
 const GamePage = () => {
 
-  const generateMines = () => {
+  const genenateBombs = (board) => {
+    const row = Math.floor(Math.random() * 16)
+    const column = Math.floor(Math.random() * 16)
+
+    board[row][column]['bomb'] = true
+  }
+
+  const generateTiles = () => {
     const value = []
 
     for (let x = 0; x < 16; x++) {
       const tempArr = []
       for (let y = 0; y < 16; y++) {
-        tempArr.push(`${x}, ${y}`)
+        tempArr.push({
+          grid: `${x}, ${y}`,
+          bomb: false,
+          number: 0
+        })
       }
       value.push(tempArr)
     }
 
+    for (let bombs = 0; bombs < 40; bombs++) {
+      genenateBombs(value)
+    }
+
     return value
   }
+
+  
 
   return (
     <div className='GamePage'>
@@ -51,7 +68,7 @@ const GamePage = () => {
       </div>
 
       <GameBoard 
-        board={generateMines()}
+        board={generateTiles()}
       />
 
       <div className="GamePage__infoBoxes">
