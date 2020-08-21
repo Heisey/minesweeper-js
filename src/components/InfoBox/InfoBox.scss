@@ -11,4 +11,8 @@
   align-items: center;
   justify-content: center;
   cursor: default;
+
+  &__time {
+    font-size: 3rem;
+  }
 }

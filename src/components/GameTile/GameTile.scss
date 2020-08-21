@@ -9,4 +9,42 @@
   text-align: center;
   font-size: 20px;
   cursor: default;
+
+  &:hover {
+    background-color: rgb(236, 6, 236);
+  }
+
+  &__number {
+    &--1 {
+      color: black;
+    }
+
+    &--2 {
+      color: red;
+    }
+
+    &--3 {
+      color: orange;
+    }
+
+    &--4 {
+      color: yellow;
+    }
+
+    &--5 {
+      color: green;
+    }
+
+    &--6 {
+      color: blue;
+    }
+
+    &--7 {
+      color: indigo;
+    }
+
+    &--8 {
+      color: violet
+    }
+  }
 }

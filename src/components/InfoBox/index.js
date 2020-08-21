@@ -11,11 +11,17 @@ import React from 'react';
 // ?? Styles
 import './InfoBox.scss'
 
-const InfoBox = () => {
+const InfoBox = (props) => {
 
+  const { info } = props
   return (
     <div className='InfoBox'>
-      <h1>InfoBox Puppies</h1>
+      <div className="InfoBox__img"></div>
+      <div className="InfoBox__time">
+        <span>
+          {info}
+        </span>
+      </div>
     </div>
   )
 }

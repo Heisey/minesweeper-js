@@ -14,10 +14,14 @@ import './GameButton.scss'
 const GameButton = (props) => {
 
   const {
+    buttonClickEvent,
     icon
   } = props
   return (
-    <div className='GameButton'>
+    <div 
+      className='GameButton'
+      onClick={buttonClickEvent}
+    >
       <i className={`fas fa-${icon}`}></i>
     </div>
   )

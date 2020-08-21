@@ -13,11 +13,21 @@ import './GameTile.scss'
 
 const GameTile = (props) => {
 
-  const { info } = props
+  const { 
+    info,
+    tileClickEvent
+  } = props
+
+  const handleTileClickEvent = () => {
+    tileClickEvent(info.grid)
+  }
 
   return (
-    <div className='GameTile'>
-      {info.bomb ? 'B' : info.number}
+    <div 
+      className='GameTile'
+      onClick={handleTileClickEvent}
+    >
+      {/* {info.bomb ? 'B' : info.number} */}
     </div>
   )
 }

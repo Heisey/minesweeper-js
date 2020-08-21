@@ -4,7 +4,7 @@
 // ????????????????????????????????????????????????????????????????
 
 // ??????????????????????? Vendor Modules ?????????????????????????
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Components
@@ -16,6 +16,26 @@ import InfoBox from '../../components/InfoBox'
 import './GamePage.scss'
 
 const GamePage = () => {
+
+  const [gameBoard, gameBoardHandler] = useState([])
+  const [gameStarted, gameStartedHandler] = useState(false)
+  const [time, timeHandler] = useState(0)
+
+  useEffect(() => {
+    gameBoardHandler(generateTiles())
+  }, [])
+
+  useEffect(() => {
+    if (gameStarted) {
+      const timerInterval = setInterval(() => {
+        timeHandler(time + 1)
+      }, 1000)
+
+      return () => {
+        clearInterval(timerInterval)
+      }
+    }
+  }, [gameStarted, time])
 
   const checkTileForBomb = (board, row, col) => {
     
@@ -142,7 +162,18 @@ const GamePage = () => {
     return value
   }
 
-  
+  const handleTileClick = (grid) => {
+    console.log(grid)
+
+
+    if (!gameStarted) {
+      gameStartedHandler(true)
+    }
+  }
+
+  const restartGame = () => {
+    gameBoardHandler(generateTiles())
+  }
 
   return (
     <div className='GamePage'>
@@ -155,6 +186,7 @@ const GamePage = () => {
         {/* // ?? Restart Game */}
         <GameButton 
           icon="redo-alt"
+          buttonClickEvent={restartGame}
         />
 
         {/* // ?? Show Game Instructions */}
@@ -164,15 +196,20 @@ const GamePage = () => {
       </div>
 
       <GameBoard 
-        board={generateTiles()}
+        board={gameBoard}
+        tileClickEvent={handleTileClick}
       />
 
       <div className="GamePage__infoBoxes">
         {/* // ?? Mines Left */}
-        <InfoBox />
+        <InfoBox 
+          info="0"
+        />
 
         {/* // ?? Time Accumulated */}
-        <InfoBox />
+        <InfoBox 
+          info={time}
+        />
       </div>
     </div>
   )

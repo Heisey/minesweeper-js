@@ -16,7 +16,8 @@ import './GameBoard.scss'
 const GameBoard = (props) => {
 
   const {
-    board
+    board,
+    tileClickEvent
   } = props;
 
   return (
@@ -25,6 +26,7 @@ const GameBoard = (props) => {
         <GameTile 
           key={`${tileObj.grid}`}
           info={tileObj}
+          tileClickEvent={tileClickEvent}
         />
       )))}
     </div>
