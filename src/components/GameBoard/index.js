@@ -21,7 +21,12 @@ const GameBoard = (props) => {
 
   return (
     <div className='GameBoard'>
-      {board.map(row => row.map(col => <GameTile />))}
+      {board.map(row => row.map(tileObj => (
+        <GameTile 
+          key={`${tileObj.grid}`}
+          info={tileObj}
+        />
+      )))}
     </div>
   )
 }

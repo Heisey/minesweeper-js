@@ -11,11 +11,13 @@ import React from 'react';
 // ?? Styles
 import './GameTile.scss'
 
-const GameTile = () => {
+const GameTile = (props) => {
+
+  const { info } = props
 
   return (
     <div className='GameTile'>
-      {/* <h1>game tile Puppies</h1> */}
+      {info.bomb ? 'B' : info.number}
     </div>
   )
 }
