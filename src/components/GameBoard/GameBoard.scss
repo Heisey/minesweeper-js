@@ -1,0 +1,13 @@
+.GameBoard {
+  display: grid;
+  max-height: 90vh;
+  grid-template-columns: repeat(16, 1fr);
+  grid-template-rows: repeat(16, 1fr);
+  grid-row-gap: 2px;
+  grid-column-gap: 2px;
+
+  background-color: seagreen;
+  padding: 4px;
+  border-radius: 25px;
+  border: 10px solid royalblue;
+}
