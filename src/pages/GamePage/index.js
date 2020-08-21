@@ -8,18 +8,59 @@ import React from 'react';
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Components
-import '../../components/GameBoard'
+import GameBoard from '../../components/GameBoard';
+import GameButton from '../../components/GameButton'
+import InfoBox from '../../components/InfoBox'
 
 // ?? Styles
 import './GamePage.scss'
-import GameBoard from '../../components/GameBoard';
 
 const GamePage = () => {
 
+  const generateMines = () => {
+    const value = []
+
+    for (let x = 0; x < 16; x++) {
+      const tempArr = []
+      for (let y = 0; y < 16; y++) {
+        tempArr.push(`${x}, ${y}`)
+      }
+      value.push(tempArr)
+    }
+
+    return value
+  }
+
   return (
     <div className='GamePage'>
-      <h1>game page Puppies</h1>
-      <GameBoard />
+      <div className="GamePage__buttons">
+        {/* // ?? Go Back to Main Menu */}
+        <GameButton 
+          icon="arrow-left"
+        />
+
+        {/* // ?? Restart Game */}
+        <GameButton 
+          icon="redo-alt"
+        />
+
+        {/* // ?? Show Game Instructions */}
+        <GameButton 
+          icon="question"
+        />
+      </div>
+
+      <GameBoard 
+        board={generateMines()}
+      />
+
+      <div className="GamePage__infoBoxes">
+        {/* // ?? Mines Left */}
+        <InfoBox />
+
+        {/* // ?? Time Accumulated */}
+        <InfoBox />
+      </div>
     </div>
   )
 }
