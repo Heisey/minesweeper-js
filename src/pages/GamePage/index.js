@@ -48,18 +48,24 @@ const GamePage = () => {
   useEffect(() => {
     if (gameLost) {
       gameStartedHandler(false)
-      const wrongGuessesPoints = bombsGuessed - bombsLeft * 5
-      let finalScore = time + ((40 - bombsGuessed) * 10) - wrongGuessesPoints - 100
-
-      if (finalScore < 0) {
-        finalScore = 0
-      }
-
-      setScore(finalScore)
-
 
     }
-  }, [gameLost, bombsGuessed, bombsLeft, time])
+  }, [gameLost])
+
+  const showAllBombs = () => {
+    const tempBoard = gameBoard.slice()
+
+    return tempBoard.map(row => {
+      return row.map(cell => {
+        if (cell.bomb && !cell.flagged) {
+          cell.clicked = true
+          return cell
+        }
+
+        return cell
+      })
+    })
+  }
 
   const handleTileClick = (grid) => {
 
@@ -78,6 +84,20 @@ const GamePage = () => {
 
     if (curCell.bomb) {
       gameLostHandler(true)
+      curCell.clicked = true
+      curCell.exploded = true
+      gameBoardHandler(showAllBombs())
+      
+      const wrongGuessesPoints = bombsGuessed - bombsLeft * 5
+      let finalScore = ((40 - bombsGuessed) * 10) - wrongGuessesPoints - 100
+
+      if (finalScore < 0) {
+        finalScore = 0
+      }
+
+      setScore(finalScore)
+
+      return 
     }
 
     if (curCell.number === null) {

@@ -25,7 +25,15 @@
   }
 
   &__flagged {
-    color: white
+    color: white;
+  }
+
+  &__boom {
+    background-color: red;
+    border-top-color: rgb(167, 3, 3);
+    border-left-color: rgb(167, 3, 3);
+    border-right-color: rgb(250, 77, 77);
+    border-bottom-color: rgb(250, 77, 77);
   }
 
   &:hover {
