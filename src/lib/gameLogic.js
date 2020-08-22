@@ -100,7 +100,9 @@ const generateTiles = () => {
         grid: [x, y],
         bomb: false,
         number: 0,
-        flagged: false
+        flagged: false,
+        clicked: false,
+        isFound: false
       })
     }
     value.push(tempArr)

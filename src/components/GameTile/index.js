@@ -30,11 +30,19 @@ const GameTile = (props) => {
 
   return (
     <div 
-      className='GameTile'
+      className={`GameTile ${info.clicked && 'GameTile__clicked'}`}
       onClick={handleTileClickEvent}
       onContextMenu={handleRightClickEvent}
     >
-      {/* {info.bomb ? 'B' : info.number} */}
+      {info.clicked && (<div className="GameTile__info">
+        {info.bomb ? <i className="fas fa-bomb"></i> : info.number}
+      </div>)}
+      
+      {(info.flagged && !info.clicked) && (
+        <div className="GameTile__flagged">
+          <i className="fas fa-flag"></i>
+        </div>
+      )}
     </div>
   )
 }
