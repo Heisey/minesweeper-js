@@ -53,7 +53,7 @@ const GamePage = () => {
       gameStartedHandler(true)
     }
 
-    const curGame = gameBoard
+    let curGame = gameBoard
 
     const curCell = curGame[grid[0]][grid[1]]
     
@@ -61,7 +61,6 @@ const GamePage = () => {
       return
     }
 
-    curCell.clicked = true
 
     if (curCell.bomb) {
       alert('game lost')
@@ -69,8 +68,11 @@ const GamePage = () => {
     }
 
     if (curCell.number === null) {
-      gameLogic.clearAdjacentTiles(curGame, curCell.grid)
+      curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid)
+    } else {
+      curCell.clicked = true
     }
+
 
     curGame[grid[0]][grid[1]] = curCell
 

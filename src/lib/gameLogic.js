@@ -1,64 +1,64 @@
-const checkTileForBomb = (board, row, col) => {
-    
-  if (board[row][col]['bomb'] === true) {
-    return true
-  }
-
-  return false
-} 
-
 const generateTileValue = (board, row, col) => {
   let numberOfBombs = 0;
 
-  const adjacentCells = getAdjacentCells(board, row, col)
+  const {
+    topLeftCell,
+    topCell,
+    topRightCell,
+    leftCell,
+    rightCell,
+    bottomLeftCell,
+    bottomCell,
+    bottomRightCell
+  } = getAdjacentCells(board, row, col)
   
   // ?? Check top left corner
-  if (adjacentCells.topLeftCell) {
-    if (adjacentCells.topLeftCell.bomb) {
+  if (topLeftCell) {
+    if (topLeftCell.bomb) {
       numberOfBombs++
     }
   }
 
   // ?? Check top
-  if (adjacentCells.topCell) {
-    if (adjacentCells.topCell.bomb) {
+  if (topCell) {
+    if (topCell.bomb) {
       numberOfBombs++
     }
   }
 
   // ?? Check top right
-  if (adjacentCells.topRightCell) {
-    if (adjacentCells.topRightCell.bomb) {
+  if (topRightCell) {
+    if (topRightCell.bomb) {
       numberOfBombs++
     }
   }
   // ?? Check left
-  if (adjacentCells.leftCell) {
-    if (checkTileForBomb(board, row, col - 1)) {
+  if (leftCell) {
+    if (leftCell.bomb) {
       numberOfBombs++
     }
   }
   // ?? check right
-  if (adjacentCells.rightCell) {
-    if (checkTileForBomb(board, row, col + 1)) {
+  if (rightCell) {
+    if (rightCell.bomb) {
       numberOfBombs++
     }
   }
   // ?? check bottom left
-  if (adjacentCells.bottomLeftCell) {
-    if (checkTileForBomb(board, row + 1, col - 1)) {
+  if (bottomLeftCell) {
+    if (bottomLeftCell.bomb) {
       numberOfBombs++
     }
   }
   // ?? check bottom
-  if (adjacentCells.bottomCell) {
-    if (checkTileForBomb(board, row + 1, col)) {
+  if (bottomCell) {
+    if (bottomCell.bomb) {
       numberOfBombs++
     }
   }
   // ?? check bottom right
-  if (adjacentCells.bottomRightCell) {
-    if (checkTileForBomb(board, row + 1, col + 1)) {
+  if (bottomRightCell) {
+    if (bottomRightCell.bomb) {
       numberOfBombs++
     }
   }
@@ -161,8 +161,112 @@ const getAdjacentCells = (board, row, col) => {
   }
 }
 
+
+
 const clearAdjacentTiles = (board, cellCoords) => {
-  console.log('clearing cells')
+  const newBoard = board
+
+  const curCell = newBoard[cellCoords[0]][cellCoords[1]]
+
+  if (curCell.flagged || curCell.clicked) {
+    return newBoard
+  }
+
+  const {
+    topLeftCell,
+    topCell,
+    topRightCell,
+    leftCell,
+    rightCell,
+    bottomLeftCell,
+    bottomCell,
+    bottomRightCell
+  } = getAdjacentCells(board, cellCoords[0], cellCoords[1])
+
+  curCell.clicked = true
+
+  // ?? Clear Top Left Cell
+  if (!topLeftCell.number) {
+    topLeftCell.clicked = true
+    newBoard[topLeftCell.grid[0]][topLeftCell.grid[1]] = topLeftCell
+    clearAdjacentTiles(newBoard, topLeftCell.grid)
+  } else {
+    topLeftCell.clicked = true
+    newBoard[topLeftCell.grid[0]][topLeftCell.grid[1]] = topLeftCell
+  }
+
+  // // ?? Clear Top Cell
+  if (!topCell.number) {
+    topCell.clicked = true
+    newBoard[topCell.grid[0]][topCell.grid[1]] = topCell
+    clearAdjacentTiles(newBoard, topCell.grid)
+  } else {
+    topCell.clicked = true
+    newBoard[topCell.grid[0]][topCell.grid[1]] = topCell
+  }
+
+  // ?? Clear Top Right Cell
+  if (!topRightCell.number) {
+    topRightCell.clicked = true
+    newBoard[topRightCell.grid[0]][topRightCell.grid[1]] = topRightCell
+    clearAdjacentTiles(newBoard, topRightCell.grid)
+  } else {
+    topRightCell.clicked = true
+    newBoard[topRightCell.grid[0]][topRightCell.grid[1]] = topRightCell
+  }
+
+
+  // ?? Clear Left Cell
+  if (!leftCell.number) {
+    leftCell.clicked = true
+    newBoard[leftCell.grid[0]][leftCell.grid[1]] = leftCell
+    clearAdjacentTiles(newBoard, leftCell.grid)
+  } else {
+    leftCell.clicked = true
+    newBoard[leftCell.grid[0]][leftCell.grid[1]] = leftCell
+  }
+
+  // ?? Clear Right Cell
+  if (!rightCell.number) {
+    rightCell.clicked = true
+    newBoard[rightCell.grid[0]][rightCell.grid[1]] = rightCell
+    clearAdjacentTiles(newBoard, rightCell.grid)
+  } else {
+    rightCell.clicked = true
+    newBoard[rightCell.grid[0]][rightCell.grid[1]] = rightCell
+  }
+
+  // ?? Clear Bottom Left Cell
+  if (!bottomLeftCell.number) {
+    bottomLeftCell.clicked = true
+    newBoard[bottomLeftCell.grid[0]][bottomLeftCell.grid[1]] = bottomLeftCell
+    clearAdjacentTiles(newBoard, bottomLeftCell.grid)
+  } else {
+    bottomLeftCell.clicked = true
+    newBoard[bottomLeftCell.grid[0]][bottomLeftCell.grid[1]] = bottomLeftCell
+  }
+
+  // ?? Clear Bottom Cell
+  if (!bottomCell.number) {
+    bottomCell.clicked = true
+    newBoard[bottomCell.grid[0]][bottomCell.grid[1]] = bottomCell
+    clearAdjacentTiles(newBoard, bottomCell.grid)
+  } else {
+    bottomCell.clicked = true
+    newBoard[bottomCell.grid[0]][bottomCell.grid[1]] = bottomCell
+  }
+
+  // ?? Clear Bottom Right Cell
+  if (!bottomRightCell.number) {
+    bottomRightCell.clicked = true
+    newBoard[bottomRightCell.grid[0]][bottomRightCell.grid[1]] = bottomRightCell
+    clearAdjacentTiles(newBoard, bottomRightCell.grid)
+  } else {
+    bottomRightCell.clicked = true
+    newBoard[bottomRightCell.grid[0]][bottomRightCell.grid[1]] = bottomRightCell
+  }
+
+  return newBoard
 }
 
 export default {
