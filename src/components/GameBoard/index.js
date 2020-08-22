@@ -17,6 +17,7 @@ const GameBoard = (props) => {
 
   const {
     board,
+    flagTile,
     tileClickEvent
   } = props;
 
@@ -26,6 +27,7 @@ const GameBoard = (props) => {
         <GameTile 
           key={`${tileObj.grid}`}
           info={tileObj}
+          flagTile={flagTile}
           tileClickEvent={tileClickEvent}
         />
       )))}

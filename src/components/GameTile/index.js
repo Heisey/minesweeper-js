@@ -15,6 +15,7 @@ const GameTile = (props) => {
 
   const { 
     info,
+    flagTile,
     tileClickEvent
   } = props
 
@@ -22,10 +23,16 @@ const GameTile = (props) => {
     tileClickEvent(info.grid)
   }
 
+  const handleRightClickEvent = e => {
+    e.preventDefault()
+    flagTile(info.grid)
+  }
+
   return (
     <div 
       className='GameTile'
       onClick={handleTileClickEvent}
+      onContextMenu={handleRightClickEvent}
     >
       {/* {info.bomb ? 'B' : info.number} */}
     </div>
