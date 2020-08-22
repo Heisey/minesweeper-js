@@ -14,6 +14,7 @@ import InfoBox from '../../components/InfoBox'
 
 // ?? Utility
 import gameLogic from '../../lib/gameLogic'
+
 // ?? Styles
 import './GamePage.scss'
 
@@ -55,13 +56,20 @@ const GamePage = () => {
     const curGame = gameBoard
 
     const curCell = curGame[grid[0]][grid[1]]
+    
+    if (curCell.flagged) {
+      return
+    }
 
     curCell.clicked = true
 
     if (curCell.bomb) {
-      console.log('bombFound')
       alert('game lost')
       gameStartedHandler(false)
+    }
+
+    if (curCell.number === null) {
+      gameLogic.clearAdjacentTiles(curGame, curCell.grid)
     }
 
     curGame[grid[0]][grid[1]] = curCell

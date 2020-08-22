@@ -9,51 +9,55 @@ const checkTileForBomb = (board, row, col) => {
 
 const generateTileValue = (board, row, col) => {
   let numberOfBombs = 0;
+
+  const adjacentCells = getAdjacentCells(board, row, col)
   
   // ?? Check top left corner
-  if (row - 1 > -1 && col - 1 > -1) {
-    if (checkTileForBomb(board, row - 1, col - 1)) {
+  if (adjacentCells.topLeftCell) {
+    if (adjacentCells.topLeftCell.bomb) {
       numberOfBombs++
     }
   }
+
   // ?? Check top
-  if (row - 1 > -1) {
-    if (checkTileForBomb(board, row - 1, col)) {
+  if (adjacentCells.topCell) {
+    if (adjacentCells.topCell.bomb) {
       numberOfBombs++
     }
   }
+
   // ?? Check top right
-  if (row - 1 > -1 && col + 1 < 16) {
-    if (checkTileForBomb(board, row - 1, col + 1)) {
+  if (adjacentCells.topRightCell) {
+    if (adjacentCells.topRightCell.bomb) {
       numberOfBombs++
     }
   }
   // ?? Check left
-  if (col - 1 > -1) {
+  if (adjacentCells.leftCell) {
     if (checkTileForBomb(board, row, col - 1)) {
       numberOfBombs++
     }
   }
   // ?? check right
-  if (col + 1 < 16) {
+  if (adjacentCells.rightCell) {
     if (checkTileForBomb(board, row, col + 1)) {
       numberOfBombs++
     }
   }
   // ?? check bottom left
-  if (row + 1 < 16 && col - 1 > -1) {
+  if (adjacentCells.bottomLeftCell) {
     if (checkTileForBomb(board, row + 1, col - 1)) {
       numberOfBombs++
     }
   }
   // ?? check bottom
-  if (row + 1 < 16) {
+  if (adjacentCells.bottomCell) {
     if (checkTileForBomb(board, row + 1, col)) {
       numberOfBombs++
     }
   }
   // ?? check bottom right
-  if (row + 1 < 16 && col + 1 < 16) {
+  if (adjacentCells.bottomRightCell) {
     if (checkTileForBomb(board, row + 1, col + 1)) {
       numberOfBombs++
     }
@@ -127,7 +131,41 @@ const generateTiles = () => {
   return value
 }
 
+const getAdjacentCells = (board, row, col) => {
+
+  const topLeftCell = (row - 1 > -1 && col - 1 > -1) ? board[row - 1][col - 1] : null
+  
+  const topCell = row - 1 > -1 ? board[row - 1][col] : null
+  
+  const topRightCell = (row - 1 > -1 && col + 1 < 16) ? board[row - 1][col + 1] : null
+  
+  const leftCell = (col - 1 > -1) ? board[row][col - 1] : null
+  
+  const rightCell = (col + 1 < 16) ? board[row][col + 1] : null
+  
+  const bottomLeftCell = (row + 1 < 16 && col - 1 > -1) ? board[row + 1][col - 1] : null
+  
+  const bottomCell = (row + 1 < 16) ? board[row + 1][col] : null
+  
+  const bottomRightCell = (row + 1 < 16 && col + 1 < 16) ? board[row + 1][col + 1] : null
+
+  return {
+    topLeftCell,
+    topCell,
+    topRightCell,
+    leftCell,
+    rightCell,
+    bottomLeftCell,
+    bottomCell,
+    bottomRightCell
+  }
+}
+
+const clearAdjacentTiles = (board, cellCoords) => {
+  console.log('clearing cells')
+}
 
 export default {
+  clearAdjacentTiles,
   generateTiles
 }
