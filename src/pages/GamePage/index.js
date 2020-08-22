@@ -8,8 +8,9 @@ import React, { useEffect, useState } from 'react';
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Components
-import GameBoard from '../../components/GameBoard';
+import GameBoard from '../../components/GameBoard'
 import GameButton from '../../components/GameButton'
+import GameScore from '../../components/GameScore'
 import InfoBox from '../../components/InfoBox'
 
 // ?? Utility
@@ -26,7 +27,7 @@ const GamePage = () => {
   const [gameStarted, gameStartedHandler] = useState(false)
   const [gameLost, gameLostHandler] = useState(false)
   const [gameWon, gameWonHandler] = useState(false)
-  const [score, setScore] = useState(0)
+  const [score, scoreHandler] = useState(0)
   const [time, timeHandler] = useState(0)
 
   
@@ -49,7 +50,6 @@ const GamePage = () => {
   useEffect(() => {
     if (gameLost) {
       gameStartedHandler(false)
-
     }
   }, [gameLost])
 
@@ -57,7 +57,7 @@ const GamePage = () => {
     if (gameWon) {
       alert("game won")
     }
-  })
+  }, [gameWon])
 
   const showAllBombs = () => {
     const tempBoard = gameBoard.slice()
@@ -74,13 +74,33 @@ const GamePage = () => {
     })
   }
 
+  const calcScore = () => {
+    const wrongGuessesPoints = bombsGuessed - bombsLeft * 5
+    console.log('wrong', wrongGuessesPoints)
+    let finalScore = ((40 - bombsGuessed) * 10) - wrongGuessesPoints - 100 + (time * 2)
+
+    if (finalScore < 0) {
+      finalScore = 0
+    }
+    return finalScore
+  }
+
   const handleTileClick = (grid) => {
+    
+    let curGame = gameBoard.slice()
 
     if (!gameStarted) {
+      let isBomb = curGame[grid[0]][grid[1]]
+      while (isBomb) {
+        curGame = gameLogic.generateTiles()
+        if (!curGame[grid[0]][grid[1]].bomb) {
+          isBomb = false
+          break
+        }
+      }
       gameStartedHandler(true)
     }
 
-    let curGame = gameBoard.slice()
 
     const curCell = curGame[grid[0]][grid[1]]
     
@@ -90,19 +110,18 @@ const GamePage = () => {
 
 
     if (curCell.bomb) {
-      gameLostHandler(true)
       curCell.clicked = true
       curCell.exploded = true
       gameBoardHandler(showAllBombs())
-      
-      const wrongGuessesPoints = bombsGuessed - bombsLeft * 5
-      let finalScore = ((40 - bombsGuessed) * 10) - wrongGuessesPoints - 100
+      gameLostHandler(true)
 
-      if (finalScore < 0) {
-        finalScore = 0
-      }
+      // const newScore = calcScore()
 
-      setScore(finalScore)
+      // console.log('new score', newScore)
+
+      // scoreHandler(state => state + newScore)
+
+      // console.log('new score', score)
 
       return 
     }
@@ -178,11 +197,17 @@ const GamePage = () => {
 
   return (
     <div className='GamePage'>
+      {gameWon && (
+        <GameScore 
+          score={calcScore}
+        />
+      )}
+      {gameLost && <GameScore />}
       <div className="GamePage__buttons">
         {/* // ?? Go Back to Main Menu */}
-        <GameButton 
+        {/* <GameButton 
           icon="arrow-left"
-        />
+        /> */}
 
         {/* // ?? Restart Game */}
         <GameButton 
@@ -191,9 +216,9 @@ const GamePage = () => {
         />
 
         {/* // ?? Show Game Instructions */}
-        <GameButton 
+        {/* <GameButton 
           icon="question"
-        />
+        /> */}
       </div>
 
       <GameBoard 
@@ -206,6 +231,7 @@ const GamePage = () => {
         {/* // ?? Mines Left */}
         <InfoBox 
           info={bombsLeft}
+          isBomb={true}
         />
 
         {/* // ?? Time Accumulated */}

@@ -162,8 +162,6 @@ const getAdjacentCells = (board, row, col) => {
   }
 }
 
-
-
 const clearAdjacentTiles = (board, cellCoords) => {
   const newBoard = board.slice()
 
