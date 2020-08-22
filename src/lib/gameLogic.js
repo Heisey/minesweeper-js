@@ -106,7 +106,8 @@ const generateTiles = () => {
         number: 0,
         flagged: false,
         clicked: false,
-        isFound: false
+        isFound: false,
+        exploded: false
       })
     }
     value.push(tempArr)
@@ -186,7 +187,7 @@ const clearAdjacentTiles = (board, cellCoords) => {
   curCell.clicked = true
 
   // ?? Clear Top Left Cell
-  if (topCell) {
+  if (topLeftCell) {
     if (!topLeftCell.number) {
       clearAdjacentTiles(newBoard, topLeftCell.grid)
     } else {
@@ -268,18 +269,9 @@ const clearAdjacentTiles = (board, cellCoords) => {
   return newBoard
 }
 
-const showAllBombs = board => {
-  const newBoard = board.slice();
 
-  const finalBoard = newBoard.map(row => (
-    row.map(cell => cell)
-  ))
-
-  return finalBoard
-}
 
 export default {
   clearAdjacentTiles,
-  generateTiles,
-  showAllBombs
+  generateTiles
 }

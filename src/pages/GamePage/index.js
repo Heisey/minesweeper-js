@@ -25,6 +25,7 @@ const GamePage = () => {
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
   const [gameLost, gameLostHandler] = useState(false)
+  const [gameWon, gameWonHandler] = useState(false)
   const [score, setScore] = useState(0)
   const [time, timeHandler] = useState(0)
 
@@ -51,6 +52,12 @@ const GamePage = () => {
 
     }
   }, [gameLost])
+
+  useEffect(() => {
+    if (gameWon) {
+      alert("game won")
+    }
+  })
 
   const showAllBombs = () => {
     const tempBoard = gameBoard.slice()
@@ -110,6 +117,20 @@ const GamePage = () => {
     curGame[grid[0]][grid[1]] = curCell
 
     gameBoardHandler(curGame)
+
+    const testForWin = []
+    
+    curGame.forEach(row => {
+      row.forEach(cell => {
+        if (cell.clicked || cell.bomb) {
+          testForWin.push(true)
+        } else {
+          testForWin.push(false)
+        }
+      })
+    })
+
+    gameWonHandler(testForWin.every(tile => tile === true))
   }
 
   const handleFlagTile = (tileCoords) => {
