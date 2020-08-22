@@ -24,6 +24,8 @@ const GamePage = () => {
   const [bombsLeft, bombsLeftHandler] = useState(40)
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
+  const [gameLost, gameLostHandler] = useState(false)
+  const [score, setScore] = useState(0)
   const [time, timeHandler] = useState(0)
 
   
@@ -38,14 +40,26 @@ const GamePage = () => {
       return () => {
         clearInterval(timeIntervals.gameTime)
       }
-    } else if (!gameStarted && time > 0) {
-      console.log('effect says hello')
-      clearInterval(timeIntervals.gameTime)
-      timeHandler(0)
-    }
+    } 
   }, [gameStarted, time])
 
   useEffect(() => restartGame(), [])
+
+  useEffect(() => {
+    if (gameLost) {
+      gameStartedHandler(false)
+      const wrongGuessesPoints = bombsGuessed - bombsLeft * 5
+      let finalScore = time + ((40 - bombsGuessed) * 10) - wrongGuessesPoints - 100
+
+      if (finalScore < 0) {
+        finalScore = 0
+      }
+
+      setScore(finalScore)
+
+
+    }
+  }, [gameLost, bombsGuessed, bombsLeft, time])
 
   const handleTileClick = (grid) => {
 
@@ -53,7 +67,7 @@ const GamePage = () => {
       gameStartedHandler(true)
     }
 
-    let curGame = gameBoard
+    let curGame = gameBoard.slice()
 
     const curCell = curGame[grid[0]][grid[1]]
     
@@ -63,8 +77,7 @@ const GamePage = () => {
 
 
     if (curCell.bomb) {
-      alert('game lost')
-      gameStartedHandler(false)
+      gameLostHandler(true)
     }
 
     if (curCell.number === null) {
@@ -80,7 +93,7 @@ const GamePage = () => {
   }
 
   const handleFlagTile = (tileCoords) => {
-    const updatedBoard = gameBoard;
+    const updatedBoard = gameBoard.slice();
 
     const tile = updatedBoard[tileCoords[0]][tileCoords[1]]
 
@@ -110,8 +123,6 @@ const GamePage = () => {
     updatedBoard[tileCoords[0]][tileCoords[1]] = tile
 
     gameBoardHandler(() => updatedBoard)
-
-    console.log('test if game won')
 
     if (tempBombsGuessed === 0 && tempBombsLeft === 0) {
       alert('game won')

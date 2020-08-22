@@ -164,12 +164,12 @@ const getAdjacentCells = (board, row, col) => {
 
 
 const clearAdjacentTiles = (board, cellCoords) => {
-  const newBoard = board
+  const newBoard = board.slice()
 
   const curCell = newBoard[cellCoords[0]][cellCoords[1]]
 
   if (curCell.flagged || curCell.clicked) {
-    return newBoard
+    return 
   }
 
   const {
@@ -187,8 +187,6 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
   // ?? Clear Top Left Cell
   if (!topLeftCell.number) {
-    topLeftCell.clicked = true
-    newBoard[topLeftCell.grid[0]][topLeftCell.grid[1]] = topLeftCell
     clearAdjacentTiles(newBoard, topLeftCell.grid)
   } else {
     topLeftCell.clicked = true
@@ -197,8 +195,6 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
   // // ?? Clear Top Cell
   if (!topCell.number) {
-    topCell.clicked = true
-    newBoard[topCell.grid[0]][topCell.grid[1]] = topCell
     clearAdjacentTiles(newBoard, topCell.grid)
   } else {
     topCell.clicked = true
@@ -207,19 +203,14 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
   // ?? Clear Top Right Cell
   if (!topRightCell.number) {
-    topRightCell.clicked = true
-    newBoard[topRightCell.grid[0]][topRightCell.grid[1]] = topRightCell
     clearAdjacentTiles(newBoard, topRightCell.grid)
   } else {
     topRightCell.clicked = true
     newBoard[topRightCell.grid[0]][topRightCell.grid[1]] = topRightCell
   }
 
-
   // ?? Clear Left Cell
   if (!leftCell.number) {
-    leftCell.clicked = true
-    newBoard[leftCell.grid[0]][leftCell.grid[1]] = leftCell
     clearAdjacentTiles(newBoard, leftCell.grid)
   } else {
     leftCell.clicked = true
@@ -228,8 +219,6 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
   // ?? Clear Right Cell
   if (!rightCell.number) {
-    rightCell.clicked = true
-    newBoard[rightCell.grid[0]][rightCell.grid[1]] = rightCell
     clearAdjacentTiles(newBoard, rightCell.grid)
   } else {
     rightCell.clicked = true
@@ -238,8 +227,6 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
   // ?? Clear Bottom Left Cell
   if (!bottomLeftCell.number) {
-    bottomLeftCell.clicked = true
-    newBoard[bottomLeftCell.grid[0]][bottomLeftCell.grid[1]] = bottomLeftCell
     clearAdjacentTiles(newBoard, bottomLeftCell.grid)
   } else {
     bottomLeftCell.clicked = true
@@ -248,8 +235,6 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
   // ?? Clear Bottom Cell
   if (!bottomCell.number) {
-    bottomCell.clicked = true
-    newBoard[bottomCell.grid[0]][bottomCell.grid[1]] = bottomCell
     clearAdjacentTiles(newBoard, bottomCell.grid)
   } else {
     bottomCell.clicked = true
@@ -258,8 +243,6 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
   // ?? Clear Bottom Right Cell
   if (!bottomRightCell.number) {
-    bottomRightCell.clicked = true
-    newBoard[bottomRightCell.grid[0]][bottomRightCell.grid[1]] = bottomRightCell
     clearAdjacentTiles(newBoard, bottomRightCell.grid)
   } else {
     bottomRightCell.clicked = true
@@ -269,7 +252,12 @@ const clearAdjacentTiles = (board, cellCoords) => {
   return newBoard
 }
 
+const showAllBombs = board => {
+  const newBoard = board.slice()
+}
+
 export default {
   clearAdjacentTiles,
-  generateTiles
+  generateTiles,
+  showAllBombs
 }
