@@ -27,7 +27,6 @@ const GamePage = () => {
   const [gameStarted, gameStartedHandler] = useState(false)
   const [gameLost, gameLostHandler] = useState(false)
   const [gameWon, gameWonHandler] = useState(false)
-  const [score, scoreHandler] = useState(0)
   const [time, timeHandler] = useState(0)
 
   
@@ -74,10 +73,10 @@ const GamePage = () => {
     })
   }
 
-  const calcScore = () => {
-    const wrongGuessesPoints = bombsGuessed - bombsLeft * 5
-    console.log('wrong', wrongGuessesPoints)
-    let finalScore = ((40 - bombsGuessed) * 10) - wrongGuessesPoints - 100 + (time * 2)
+  const calcScore = (bGuessed, bLeft, time) => {
+    const wrongGuessesPoints = bGuessed - bLeft * 5
+    
+    let finalScore = ((40 - bombsGuessed) * 10) - wrongGuessesPoints - (time * 2)
 
     if (finalScore < 0) {
       finalScore = 0
@@ -114,14 +113,6 @@ const GamePage = () => {
       curCell.exploded = true
       gameBoardHandler(showAllBombs())
       gameLostHandler(true)
-
-      // const newScore = calcScore()
-
-      // console.log('new score', newScore)
-
-      // scoreHandler(state => state + newScore)
-
-      // console.log('new score', score)
 
       return 
     }
@@ -193,16 +184,23 @@ const GamePage = () => {
   const restartGame = () => {
     gameBoardHandler(gameLogic.generateTiles())
     gameStartedHandler(false)
+    timeHandler(0)
+    gameLostHandler(false)
+    gameWonHandler(false)
+    bombsGuessedHandler(40)
+    bombsLeftHandler(40)
   }
 
   return (
     <div className='GamePage'>
       {gameWon && (
         <GameScore 
-          score={calcScore}
+          calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
         />
       )}
-      {gameLost && <GameScore />}
+      {gameLost && <GameScore 
+          calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
+      />}
       <div className="GamePage__buttons">
         {/* // ?? Go Back to Main Menu */}
         {/* <GameButton 

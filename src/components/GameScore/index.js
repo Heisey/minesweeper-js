@@ -15,18 +15,10 @@ import './GameScore.scss'
 const GameScore = (props) => {
 
   const { calcScore } = props
-  // console.log('score', calcScore())
-
-  const handleCalcScore = () => {
-    const newScore = calcScore()
-    console.log('newScore', newScore)
-    return newScore
-  }
 
   return (
     <div className='GameScore'>
-      Game Score Puppies
-      {`your score is ${handleCalcScore()} points`}
+      {`YOU SCORED: ${calcScore()} POINTS`}
     </div>
   )
 }
