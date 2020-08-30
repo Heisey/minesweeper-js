@@ -1,0 +1,101 @@
+.Landing {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  font-size: 30px;
+
+  &__game {
+    position: absolute;
+    transition: all;
+    transition-delay: 0.4s;
+    
+    &--begin {
+      left: 0;
+    }
+
+    &--end {
+      animation-name: gameButton;
+      animation-duration: 0.4s;
+      animation-fill-mode: backwards;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+  }
+
+  &__score {
+    position: absolute;
+    transition: all;
+    transition-delay: 0.4s;
+    
+    &--begin {
+      right: 0;
+    }
+
+    &--end {
+      animation-name: scoreButton;
+      animation-duration: 0.4s;
+      animation-fill-mode: backwards;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+    }
+  }
+}
+
+@keyframes gameButton {
+  0% {
+    left: 0;
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  40% {
+    left: 25%;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  80% {
+    left: 50%;
+  }
+
+  100% {
+    display: none;
+  }
+}
+
+@keyframes scoreButton {
+  0% {
+    right: 0;
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0.5;
+  }
+
+  40% {
+    right: 25%;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  80% {
+    right: 50%;
+  }
+
+  100% {
+    display: none;
+  }
+}

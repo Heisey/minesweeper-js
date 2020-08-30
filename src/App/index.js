@@ -8,18 +8,21 @@ import React from 'react';
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Pages
-import '../pages/GamePage'
+import GamePage from '../pages/GamePage';
+import Landing from '../pages/Landing'
 
 // ?? Styles
 import './App.scss'
-import GamePage from '../pages/GamePage';
 
 const App = () => {
 
   return (
     <div className='App'>
-    <h1 className="App__title"><span className="App__title--first">MARS</span>SWEEPER</h1>
-      <GamePage />
+    <h1 className="App__title">
+      <span className="App__title--first">MARS</span>SWEEPER
+    </h1>
+      <Landing />
+      {/* <GamePage /> */}
     </div>
   )
 }
