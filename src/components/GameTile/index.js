@@ -16,11 +16,13 @@ const GameTile = (props) => {
   const { 
     info,
     flagTile,
-    tileClickEvent
+    tileClickEvent,
+    params,
+    board
   } = props
 
   const handleTileClickEvent = () => {
-    tileClickEvent(info.grid)
+    tileClickEvent(info.grid, board, params)
   }
 
   const handleRightClickEvent = e => {

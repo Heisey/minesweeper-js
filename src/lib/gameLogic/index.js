@@ -9,6 +9,7 @@ import { default as generateRandomTile } from './generateRandomTile'
 import { default as generateTiles } from './generateTiles'
 import { default as generateTileValue } from './generateTileValue'
 import { default as getAdjacentCells } from './getAdjacentCells'
+import { default as showAllBombs } from './showAllBombs'
 
 const gameLogic = {
   clearAdjacentTiles,
@@ -17,7 +18,8 @@ const gameLogic = {
   generateRandomTile,
   generateTiles,
   generateTileValue,
-  getAdjacentCells
+  getAdjacentCells,
+  showAllBombs
 } 
 
 export default gameLogic

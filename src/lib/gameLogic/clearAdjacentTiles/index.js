@@ -4,6 +4,19 @@
 
 import gameLogic from '../'
 
+/**
+ * Clears all adjacent tiles.
+ * A recursive function
+ * @param {[[]]} board A game board
+ * @param {[Number, Number]} cellCoords The current object selected in board
+ * @param {{
+    * rows: Number
+    * cols: Number
+    * bombs: Number
+ * }} params the game parameters
+ * @return {[[]]} A new game board
+ */
+
 const clearAdjacentTiles = (board, cellCoords, params) => {
   
   const newBoard = board.slice()

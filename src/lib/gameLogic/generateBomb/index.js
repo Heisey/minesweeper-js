@@ -4,6 +4,11 @@
 
 import gameLogic from '../'
 
+/**
+ * Generates a bomb in a random location
+ * @param {*} params  Game Parameters
+ * @param {*} board  MineSweep Game Board
+ */
 const generateBomb = (params, board) => {
   let emptyTile = true;
 

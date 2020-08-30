@@ -22,9 +22,6 @@ import './GamePage.scss'
 const GamePage = (props) => {
 
   const { handleShowLanding, gameParams, difficulty } = props
-
-
-  // const gameParams = gameLogic.generateGameParams(difficulty)
   
   const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bomb)
   const [bombsLeft, bombsLeftHandler] = useState(gameParams.bomb)
@@ -33,10 +30,6 @@ const GamePage = (props) => {
   const [gameLost, gameLostHandler] = useState(false)
   const [gameWon, gameWonHandler] = useState(false)
   const [time, timeHandler] = useState(0)
-
-
-  // const [gameParams, gameParamsHandler] = useState(gameLogic.generateGameParams(difficulty))
-  
 
   useEffect(() => {
     const timeIntervals = {}
@@ -67,21 +60,6 @@ const GamePage = (props) => {
     }
   }, [gameWon])
 
-  const showAllBombs = () => {
-    const tempBoard = gameBoard.slice()
-
-    return tempBoard.map(row => {
-      return row.map(cell => {
-        if (cell.bomb && !cell.flagged) {
-          cell.clicked = true
-          return cell
-        }
-
-        return cell
-      })
-    })
-  }
-
   const calcScore = (bGuessed, bLeft, time) => {
     const wrongGuessesPoints = bGuessed - bLeft * 5
     
@@ -93,16 +71,16 @@ const GamePage = (props) => {
     return finalScore
   }
 
-  const handleTileClick = (grid) => {
+  const handleTileClick = (grid, board, params) => {
     
-    let curGame = gameBoard.slice()
+    let curGame = board.slice()
 
     
 
     if (!gameStarted) {
       let isBomb = curGame[grid[0]][grid[1]]
       while (isBomb) {
-        curGame = gameLogic.generateTiles(gameParams)
+        curGame = gameLogic.generateTiles(params)
         if (!curGame[grid[0]][grid[1]].bomb) {
           isBomb = false
           break
@@ -122,7 +100,7 @@ const GamePage = (props) => {
     if (curCell.bomb) {
       curCell.clicked = true
       curCell.exploded = true
-      gameBoardHandler(showAllBombs())
+      gameBoardHandler(gameLogic.showAllBombs(board))
       gameLostHandler(true)
 
       return 
@@ -130,7 +108,7 @@ const GamePage = (props) => {
 
     if (curCell.number === null) {
 
-      curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid, gameParams)
+      curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid, params)
       
     } else {
       curCell.clicked = true
@@ -237,6 +215,7 @@ const GamePage = (props) => {
         board={gameBoard}
         tileClickEvent={handleTileClick}
         flagTile={handleFlagTile}
+        params={gameParams}
       />
 
       <div className="GamePage__infoBoxes">

@@ -19,7 +19,8 @@ const GameBoard = (props) => {
     board,
     flagTile,
     tileClickEvent,
-    difficulty
+    difficulty,
+    params
   } = props;
 
   const gameBoardClassNames = () => {
@@ -43,6 +44,8 @@ const GameBoard = (props) => {
           info={tileObj}
           flagTile={flagTile}
           tileClickEvent={tileClickEvent}
+          params={params}
+          board={board}
         />
       )))}
     </div>
