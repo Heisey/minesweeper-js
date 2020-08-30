@@ -14,7 +14,7 @@ import GameScore from '../../components/GameScore'
 import InfoBox from '../../components/InfoBox'
 
 // ?? Utility
-import gameLogic from '../../lib/gameLogic'
+import { gameLogic } from '../../lib'
 
 // ?? Styles
 import './GamePage.scss'
@@ -23,12 +23,11 @@ const GamePage = (props) => {
 
   const { handleShowLanding, gameParams, difficulty } = props
 
-  console.log(difficulty)
 
   // const gameParams = gameLogic.generateGameParams(difficulty)
   
-  const [bombsGuessed, bombsGuessedHandler] = useState(40)
-  const [bombsLeft, bombsLeftHandler] = useState(40)
+  const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bomb)
+  const [bombsLeft, bombsLeftHandler] = useState(gameParams.bomb)
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
   const [gameLost, gameLostHandler] = useState(false)
@@ -98,6 +97,8 @@ const GamePage = (props) => {
     
     let curGame = gameBoard.slice()
 
+    
+
     if (!gameStarted) {
       let isBomb = curGame[grid[0]][grid[1]]
       while (isBomb) {
@@ -128,12 +129,12 @@ const GamePage = (props) => {
     }
 
     if (curCell.number === null) {
-      console.log('gameparams', gameParams)
+
       curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid, gameParams)
+      
     } else {
       curCell.clicked = true
     }
-
 
     curGame[grid[0]][grid[1]] = curCell
 

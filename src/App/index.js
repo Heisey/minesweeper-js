@@ -12,7 +12,7 @@ import GamePage from '../pages/GamePage';
 import Landing from '../pages/Landing'
 
 // ?? Utils
-import gameLogic from '../lib/gameLogic'
+import { gameLogic } from '../lib'
 
 // ?? Styles
 import './App.scss'
