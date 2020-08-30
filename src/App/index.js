@@ -11,6 +11,9 @@ import React, { useState } from 'react';
 import GamePage from '../pages/GamePage';
 import Landing from '../pages/Landing'
 
+// ?? Utils
+import gameLogic from '../lib/gameLogic'
+
 // ?? Styles
 import './App.scss'
 
@@ -18,10 +21,22 @@ const App = () => {
   
   const [showGame, showGameHandler] = useState(false)
   const [showLanding, showLandingHandler] = useState(true)
+  const [difficultySelected, difficultySelectedHandler] = useState('')
+  const [gameParams, gameParamsHandler] = useState({})
 
   const handleShowGame = () => {
     showGameHandler(true)
     showLandingHandler(false)
+  }
+
+  const handleShowLanding = () => {
+    showGameHandler(false)
+    showLandingHandler(true)
+  }
+
+  const handleSelectedDifficulty = (difficulty) => {
+    difficultySelectedHandler(difficulty)
+    gameParamsHandler(gameLogic.generateGameParams(difficulty))
   }
 
   return (
@@ -33,12 +48,17 @@ const App = () => {
         <div className='App__landing'>
           <Landing 
             handleShowGame={handleShowGame}
+            selectDifficulty={handleSelectedDifficulty}
           />
         </div>
       )}
       {showGame && (
         <div className='App__game'>
-          <GamePage />
+          <GamePage 
+            handleShowLanding={handleShowLanding}
+            gameParams={gameParams}
+            difficulty={difficultySelected}
+          />
         </div>)
       }
     </div>

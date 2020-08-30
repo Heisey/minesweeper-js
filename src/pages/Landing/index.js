@@ -14,12 +14,13 @@ import './Landing.scss'
 
 const Landing = (props) => {
 
-  const { handleShowGame } = props
+  const { handleShowGame, selectDifficulty } = props
 
   const [primaryGameMenu, primaryGameMenuHandler] = useState(true)
   const [scoreMenu, scoreMenuHandler] = useState(false)
   const [difficultyGameMenu, difficultyGameMenuHandler] = useState(false)
 
+  // ?? State Handlers
   const handlePrimaryGameMenu = () => {
     primaryGameMenuHandler(false)
 
@@ -28,10 +29,28 @@ const Landing = (props) => {
     }, 300)
   }
 
-  const handleMediumGame = () => {
+  const handleHardGame = () => {
     handleShowGame()
+    selectDifficulty('hard')
   }
 
+  const handleMediumGame = () => {
+    handleShowGame()
+    selectDifficulty('medium')
+  }
+
+  const handleEasyGame = () => {
+    handleShowGame()
+    selectDifficulty('easy')
+  }
+
+  const handleScoreMenu = () => {
+    handleShowGame()
+    scoreMenuHandler(true)
+  }
+
+
+  // ?? Class Name Handlers
   const gameClassNameHandler = () => {
     let name = 'Landing__game--'
     if (primaryGameMenu) {
@@ -50,9 +69,7 @@ const Landing = (props) => {
     }
   }
 
-  const handleScoreMenu = () => {
-    scoreMenuHandler(true)
-  }
+  
 
   return (
     <div className="Landing">
@@ -75,6 +92,7 @@ const Landing = (props) => {
           <div className={`Landing__gameDifficulty--easy${difficultyGameMenu ? 'End' : 'Start'}`}>
             <MenuButton 
               text='easy'
+              clickHandler={handleEasyGame}
             />
           </div>
           <div className={`Landing__gameDifficulty--medium${difficultyGameMenu ? 'End' : 'Start'}`}>
@@ -86,6 +104,7 @@ const Landing = (props) => {
           <div className={`Landing__gameDifficulty--hard${difficultyGameMenu ? 'End' : 'Start'}`}>
             <MenuButton 
               text='hard'
+              clickHandler={handleHardGame}
             />
           </div>
         </div>

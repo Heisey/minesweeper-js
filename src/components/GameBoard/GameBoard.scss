@@ -1,13 +1,28 @@
 .GameBoard {
+  margin: 0 auto;
   display: grid;
-  max-height: 90vh;
-  grid-template-columns: repeat(16, 1fr);
-  grid-template-rows: repeat(16, 1fr);
+  height: fit-content;
+  width: fit-content;
+
   grid-row-gap: 2px;
   grid-column-gap: 2px;
-
   background-color: seagreen;
   padding: 4px;
   border-radius: 25px;
   border: 6px solid royalblue;
+
+  &--easy {
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+  }
+
+  &--medium {
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+  }
+
+  &--hard {
+    grid-template-columns: repeat(30, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+  }
 }

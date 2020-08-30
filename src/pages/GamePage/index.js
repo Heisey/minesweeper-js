@@ -19,8 +19,14 @@ import gameLogic from '../../lib/gameLogic'
 // ?? Styles
 import './GamePage.scss'
 
-const GamePage = () => {
+const GamePage = (props) => {
 
+  const { handleShowLanding, gameParams, difficulty } = props
+
+  console.log(difficulty)
+
+  // const gameParams = gameLogic.generateGameParams(difficulty)
+  
   const [bombsGuessed, bombsGuessedHandler] = useState(40)
   const [bombsLeft, bombsLeftHandler] = useState(40)
   const [gameBoard, gameBoardHandler] = useState([])
@@ -29,6 +35,8 @@ const GamePage = () => {
   const [gameWon, gameWonHandler] = useState(false)
   const [time, timeHandler] = useState(0)
 
+
+  // const [gameParams, gameParamsHandler] = useState(gameLogic.generateGameParams(difficulty))
   
 
   useEffect(() => {
@@ -44,7 +52,9 @@ const GamePage = () => {
     } 
   }, [gameStarted, time])
 
-  useEffect(() => restartGame(), [])
+  useEffect(() => {
+    gameBoardHandler(gameLogic.generateTiles(gameParams))
+  }, [gameParams])
 
   useEffect(() => {
     if (gameLost) {
@@ -91,7 +101,7 @@ const GamePage = () => {
     if (!gameStarted) {
       let isBomb = curGame[grid[0]][grid[1]]
       while (isBomb) {
-        curGame = gameLogic.generateTiles()
+        curGame = gameLogic.generateTiles(gameParams)
         if (!curGame[grid[0]][grid[1]].bomb) {
           isBomb = false
           break
@@ -118,7 +128,7 @@ const GamePage = () => {
     }
 
     if (curCell.number === null) {
-      curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid)
+      curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid, gameParams)
     } else {
       curCell.clicked = true
     }
@@ -182,7 +192,7 @@ const GamePage = () => {
   }
 
   const restartGame = () => {
-    gameBoardHandler(gameLogic.generateTiles())
+    gameBoardHandler(gameLogic.generateTiles(gameParams))
     gameStartedHandler(false)
     timeHandler(0)
     gameLostHandler(false)
@@ -203,9 +213,10 @@ const GamePage = () => {
       />}
       <div className="GamePage__buttons">
         {/* // ?? Go Back to Main Menu */}
-        {/* <GameButton 
+        <GameButton 
           icon="arrow-left"
-        /> */}
+          buttonClickEvent={handleShowLanding}
+        />
 
         {/* // ?? Restart Game */}
         <GameButton 
@@ -220,6 +231,7 @@ const GamePage = () => {
       </div>
 
       <GameBoard 
+        difficulty={difficulty}
         board={gameBoard}
         tileClickEvent={handleTileClick}
         flagTile={handleFlagTile}

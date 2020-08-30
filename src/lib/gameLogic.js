@@ -1,4 +1,4 @@
-const generateTileValue = (board, row, col) => {
+const generateTileValue = (board, row, col, params) => {
   let numberOfBombs = 0;
 
   const {
@@ -10,7 +10,7 @@ const generateTileValue = (board, row, col) => {
     bottomLeftCell,
     bottomCell,
     bottomRightCell
-  } = getAdjacentCells(board, row, col)
+  } = getAdjacentCells(board, row, col, params)
   
   // ?? Check top left corner
   if (topLeftCell) {
@@ -70,18 +70,18 @@ const generateTileValue = (board, row, col) => {
   return numberOfBombs
 }
 
-const generateRandomTile = () => {
-  const row = Math.floor(Math.random() * 16)
-  const column = Math.floor(Math.random() * 16)
+const generateRandomTile = (params) => {
+  const row = Math.floor(Math.random() * params.rows)
+  const column = Math.floor(Math.random() * params.cols)
 
   return [row, column]
 }
 
-const generateBomb = (board) => {
+const generateBomb = (params, board) => {
   let emptyTile = true;
 
   while (emptyTile === true) {
-    const tile = generateRandomTile()
+    const tile = generateRandomTile(params)
     const row = tile[0]
     const col = tile[1]
     
@@ -93,13 +93,34 @@ const generateBomb = (board) => {
 
 }
 
-const generateTiles = () => {
+const generateGameParams = (difficulty) => {
+  const gameParams = {}
+
+  if (difficulty === 'medium') {
+    gameParams.rows = 16
+    gameParams.cols = 16
+    gameParams.bombs = 40
+  } else if (difficulty === 'hard') {
+    gameParams.rows = 30
+    gameParams.cols = 16
+    gameParams.bombs = 99
+  } else {
+    gameParams.rows = 9
+    gameParams.cols = 9
+    gameParams.bombs = 10
+  }
+
+  return gameParams
+}
+
+const generateTiles = (params) => {
   const value = []
+  
 
   // ?? Generate Tile Obj into row/col array
-  for (let x = 0; x < 16; x++) {
+  for (let x = 0; x < params.rows; x++) {
     const tempArr = []
-    for (let y = 0; y < 16; y++) {
+    for (let y = 0; y < params.cols; y++) {
       tempArr.push({
         grid: [x, y],
         bomb: false,
@@ -116,39 +137,41 @@ const generateTiles = () => {
   
 
   // ?? Generate random bomb locations on board
-  for (let bombs = 0; bombs < 40; bombs++) {
-    generateBomb(value)
+  for (let bombs = 0; bombs < params.bombs; bombs++) {
+    generateBomb(params, value)
   }
-
+  
   // ?? Generate number value for tiles
-  for (let x = 0; x < 16; x++) {
-    for (let y = 0; y < 16; y++) {
+  for (let x = 0; x < params.rows; x++) {
+    for (let y = 0; y < params.cols; y++) {
       if (!value[x][y]['bomb']) {
-        value[x][y]['number'] = generateTileValue(value, x, y)
+        value[x][y]['number'] = generateTileValue(value, x, y, params)
       }
       
     }
   }
+  
   return value
 }
 
-const getAdjacentCells = (board, row, col) => {
+const getAdjacentCells = (board, row, col, params) => {
+  console.log('params', params)
 
   const topLeftCell = (row - 1 > -1 && col - 1 > -1) ? board[row - 1][col - 1] : null
   
   const topCell = row - 1 > -1 ? board[row - 1][col] : null
   
-  const topRightCell = (row - 1 > -1 && col + 1 < 16) ? board[row - 1][col + 1] : null
+  const topRightCell = (row - 1 > -1 && col + 1 < params.cols) ? board[row - 1][col + 1] : null
   
   const leftCell = (col - 1 > -1) ? board[row][col - 1] : null
   
-  const rightCell = (col + 1 < 16) ? board[row][col + 1] : null
+  const rightCell = (col + 1 < params.cols) ? board[row][col + 1] : null
   
-  const bottomLeftCell = (row + 1 < 16 && col - 1 > -1) ? board[row + 1][col - 1] : null
+  const bottomLeftCell = (row + 1 < params.rows && col - 1 > -1) ? board[row + 1][col - 1] : null
   
-  const bottomCell = (row + 1 < 16) ? board[row + 1][col] : null
+  const bottomCell = (row + 1 < params.rows) ? board[row + 1][col] : null
   
-  const bottomRightCell = (row + 1 < 16 && col + 1 < 16) ? board[row + 1][col + 1] : null
+  const bottomRightCell = (row + 1 < params.rows && col + 1 < 16) ? board[row + 1][col + 1] : null
 
   return {
     topLeftCell,
@@ -162,7 +185,7 @@ const getAdjacentCells = (board, row, col) => {
   }
 }
 
-const clearAdjacentTiles = (board, cellCoords) => {
+const clearAdjacentTiles = (board, cellCoords, params) => {
   const newBoard = board.slice()
 
   const curCell = newBoard[cellCoords[0]][cellCoords[1]]
@@ -180,7 +203,7 @@ const clearAdjacentTiles = (board, cellCoords) => {
     bottomLeftCell,
     bottomCell,
     bottomRightCell
-  } = getAdjacentCells(board, cellCoords[0], cellCoords[1])
+  } = getAdjacentCells(board, cellCoords[0], cellCoords[1], params)
 
   curCell.clicked = true
 
@@ -271,5 +294,6 @@ const clearAdjacentTiles = (board, cellCoords) => {
 
 export default {
   clearAdjacentTiles,
-  generateTiles
+  generateTiles,
+  generateGameParams
 }

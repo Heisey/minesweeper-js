@@ -18,11 +18,25 @@ const GameBoard = (props) => {
   const {
     board,
     flagTile,
-    tileClickEvent
+    tileClickEvent,
+    difficulty
   } = props;
 
+  const gameBoardClassNames = () => {
+    let returnValue = 'GameBoard GameBoard'
+    if (difficulty === 'medium') {
+      returnValue = returnValue + '--medium'
+    } else if (difficulty === 'hard') {
+      returnValue = returnValue + '--hard'
+    } else {
+      returnValue = returnValue + '--easy'
+    }
+
+    return returnValue
+  }
+
   return (
-    <div className='GameBoard'>
+    <div className={gameBoardClassNames()}>
       {board.map(row => row.map(tileObj => (
         <GameTile 
           key={`${tileObj.grid}`}
