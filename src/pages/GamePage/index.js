@@ -128,6 +128,7 @@ const GamePage = (props) => {
     }
 
     if (curCell.number === null) {
+      console.log('gameparams', gameParams)
       curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid, gameParams)
     } else {
       curCell.clicked = true
