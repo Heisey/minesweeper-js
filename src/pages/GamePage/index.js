@@ -8,9 +8,10 @@ import React, { useEffect, useState } from 'react';
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Components
-import GameBoard from '../../components/GameBoard'
-import GameButton from '../../components/GameButton'
-import GameScore from '../../components/GameScore'
+import { Game } from '../../components' 
+// import GameBoard from '../../components/GameBoard'
+// import GameButton from '../../components/GameButton'
+// import GameScore from '../../components/GameScore'
 import InfoBox from '../../components/InfoBox'
 
 // ?? Utility
@@ -178,22 +179,22 @@ const GamePage = (props) => {
   return (
     <div className='GamePage'>
       {gameWon && (
-        <GameScore 
+        <Game.Score 
           calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
         />
       )}
-      {gameLost && <GameScore 
+      {gameLost && <Game.Score 
           calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
       />}
       <div className="GamePage__buttons">
         {/* // ?? Go Back to Main Menu */}
-        <GameButton 
+        <Game.Button 
           icon="arrow-left"
           buttonClickEvent={handleShowLanding}
         />
 
         {/* // ?? Restart Game */}
-        <GameButton 
+        <Game.Button 
           icon="redo-alt"
           buttonClickEvent={restartGame}
         />
@@ -204,7 +205,7 @@ const GamePage = (props) => {
         /> */}
       </div>
 
-      <GameBoard 
+      <Game.Board 
         difficulty={difficulty}
         board={gameBoard}
         tileClickEvent={handleTileClick}
