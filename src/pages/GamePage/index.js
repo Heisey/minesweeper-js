@@ -23,8 +23,8 @@ const GamePage = (props) => {
 
   const { handleShowLanding, gameParams, difficulty } = props
   
-  const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bomb)
-  const [bombsLeft, bombsLeftHandler] = useState(gameParams.bomb)
+  const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bombs)
+  const [bombsLeft, bombsLeftHandler] = useState(gameParams.bombs)
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
   const [gameLost, gameLostHandler] = useState(false)
@@ -56,14 +56,14 @@ const GamePage = (props) => {
 
   useEffect(() => {
     if (gameWon) {
-      alert("game won")
+      gameStartedHandler(false)
     }
   }, [gameWon])
 
   const calcScore = (bGuessed, bLeft, time) => {
     const wrongGuessesPoints = bGuessed - bLeft * 5
     
-    let finalScore = ((40 - bombsGuessed) * 10) - wrongGuessesPoints - (time * 2)
+    let finalScore = ((40 - bGuessed) * 10) - wrongGuessesPoints - (time * 2)
 
     if (finalScore < 0) {
       finalScore = 0
@@ -74,8 +74,6 @@ const GamePage = (props) => {
   const handleTileClick = (grid, board, params) => {
     
     let curGame = board.slice()
-
-    
 
     if (!gameStarted) {
       let isBomb = curGame[grid[0]][grid[1]]
@@ -89,13 +87,11 @@ const GamePage = (props) => {
       gameStartedHandler(true)
     }
 
-
     const curCell = curGame[grid[0]][grid[1]]
     
     if (curCell.flagged) {
       return
     }
-
 
     if (curCell.bomb) {
       curCell.clicked = true
@@ -107,9 +103,7 @@ const GamePage = (props) => {
     }
 
     if (curCell.number === null) {
-
       curGame = gameLogic.clearAdjacentTiles(curGame, curCell.grid, params)
-      
     } else {
       curCell.clicked = true
     }
@@ -123,6 +117,7 @@ const GamePage = (props) => {
     curGame.forEach(row => {
       row.forEach(cell => {
         if (cell.clicked || cell.bomb) {
+          // console.log(cell)
           testForWin.push(true)
         } else {
           testForWin.push(false)
@@ -166,8 +161,7 @@ const GamePage = (props) => {
     gameBoardHandler(() => updatedBoard)
 
     if (tempBombsGuessed === 0 && tempBombsLeft === 0) {
-      alert('game won')
-      console.log('game won')
+      gameWonHandler(true)
     }
   }
 
@@ -177,8 +171,8 @@ const GamePage = (props) => {
     timeHandler(0)
     gameLostHandler(false)
     gameWonHandler(false)
-    bombsGuessedHandler(40)
-    bombsLeftHandler(40)
+    bombsGuessedHandler(gameParams.bombs)
+    bombsLeftHandler(gameParams.bombs)
   }
 
   return (
