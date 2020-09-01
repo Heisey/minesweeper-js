@@ -11,7 +11,7 @@ import React from 'react';
 // ?? Styles
 import './GameButton.scss'
 
-const GameButton = (props) => {
+const Button = (props) => {
 
   const {
     buttonClickEvent,
@@ -27,4 +27,4 @@ const GameButton = (props) => {
   )
 }
 
-export default GameButton
+export default Button

@@ -8,10 +8,7 @@ import React, { useEffect, useState } from 'react';
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Components
-import { Game } from '../../components' 
-// import GameBoard from '../../components/GameBoard'
-// import GameButton from '../../components/GameButton'
-// import GameScore from '../../components/GameScore'
+import { Game, Score } from '../../components' 
 import InfoBox from '../../components/InfoBox'
 
 // ?? Utility
@@ -179,9 +176,13 @@ const GamePage = (props) => {
   return (
     <div className='GamePage'>
       {gameWon && (
-        <Game.Score 
-          calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
+        <Score
+          pointsScored={calcScore(bombsGuessed, bombsLeft, time)}
+          restartGame={restartGame}
         />
+        // <Game.Score 
+        //   calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
+        // />
       )}
       {gameLost && <Game.Score 
           calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}

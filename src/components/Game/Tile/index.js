@@ -11,7 +11,7 @@ import React from 'react';
 // ?? Styles
 import './GameTile.scss'
 
-const GameTile = (props) => {
+const Tile = (props) => {
 
   const { 
     info,
@@ -49,4 +49,4 @@ const GameTile = (props) => {
   )
 }
 
-export default GameTile
+export default Tile

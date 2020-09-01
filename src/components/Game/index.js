@@ -1,9 +1,9 @@
 
 
-import { default as Board } from './GameBoard'
-import { default as Button } from './GameButton'
-import { default as Score } from './GameScore'
-import { default as Tile } from './GameTile'
+import { default as Board } from './Board'
+import { default as Button } from './Button'
+import { default as Score } from './Score'
+import { default as Tile } from './Tile'
 
 const Game = {
   Board,

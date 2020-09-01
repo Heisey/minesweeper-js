@@ -12,7 +12,7 @@ import React from 'react';
 // ?? Styles
 import './GameScore.scss'
 
-const GameScore = (props) => {
+const Score = (props) => {
 
   const { calcScore } = props
 
@@ -23,4 +23,4 @@ const GameScore = (props) => {
   )
 }
 
-export default GameScore
+export default Score

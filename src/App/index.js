@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 // ?? Pages
 import GamePage from '../pages/GamePage';
 import Landing from '../pages/Landing'
+import { Score } from '../components'
 
 // ?? Utils
 import { gameLogic } from '../lib'
@@ -61,6 +62,8 @@ const App = () => {
           />
         </div>)
       }
+
+      
     </div>
   )
 }
