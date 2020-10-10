@@ -37,7 +37,6 @@ const GamePage = (props) => {
   const [bombsLeft, bombsLeftHandler] = useState(gameParams.bombs)
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
-  // const [time, timeHandler] = useState(0)
 
   useEffect(() => {
     const timeIntervals = {}

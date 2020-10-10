@@ -1,15 +1,15 @@
+import { keys } from '../../'
 
+export const gameWon = () => ({ type: keys.GAME_WON })
 
-export const gameWon = () => ({ type: 'GAME_WON' })
+export const gameLost = () => ({ type: keys.GAME_LOST })
 
-export const gameLost = () => ({ type: 'GAME_LOST' })
-
-export const resetHasWon = () => ({ type: 'RESET_HAS_WON' })
+export const resetHasWon = () => ({ type: keys.RESET_HAS_WON })
 
 export const gameTime = (time) => {
 
   return {
-    type: 'GAME_TIME',
+    type: keys.GAME_TIME,
     payload: time
   }
 }

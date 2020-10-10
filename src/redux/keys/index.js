@@ -1,0 +1,11 @@
+const GAME_WON = 'GAME_WON'
+const RESET_HAS_WON = 'RESET_HAS_WON'
+const GAME_TIME = 'GAME_TIME'
+const GAME_LOST = 'GAME_LOST'
+
+export default {
+  GAME_LOST,
+  GAME_TIME,
+  GAME_WON,
+  RESET_HAS_WON
+}
