@@ -212,7 +212,6 @@ const GamePage = (props) => {
         board={gameBoard}
         tileClickEvent={handleTileClick}
         flagTile={handleFlagTile}
-        params={gameParams}
       />
 
       <div className="GamePage__infoBoxes">

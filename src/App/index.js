@@ -21,12 +21,8 @@ import './App.scss'
 
 const App = (props) => {
 
-  const { difficulty } = props
-  
   const [showGame, showGameHandler] = useState(false)
   const [showLanding, showLandingHandler] = useState(true)
-  // const [difficultySelected, difficultySelectedHandler] = useState('')
-  const [gameParams, gameParamsHandler] = useState({})
 
   const handleShowGame = () => {
     showGameHandler(true)
@@ -37,11 +33,6 @@ const App = (props) => {
     showGameHandler(false)
     showLandingHandler(true)
   }
-
-  const handleSelectedDifficulty = () => {
-    gameParamsHandler(gameLogic.generateGameParams(difficulty))
-  }
-
   return (
     <div className='App'>
       <h1 className="App__title">
@@ -51,7 +42,6 @@ const App = (props) => {
         <div className='App__landing'>
           <Landing 
             handleShowGame={handleShowGame}
-            selectDifficulty={handleSelectedDifficulty}
           />
         </div>
       )}
@@ -59,8 +49,6 @@ const App = (props) => {
         <div className='App__game'>
           <GamePage 
             handleShowLanding={handleShowLanding}
-            gameParams={gameParams}
-            // difficulty={difficultySelected}
           />
         </div>)
       }
@@ -70,10 +58,4 @@ const App = (props) => {
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    difficulty: state.gameLogic.difficulty
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App

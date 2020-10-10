@@ -2,9 +2,11 @@ const GAME_WON = 'GAME_WON'
 const RESET_HAS_WON = 'RESET_HAS_WON'
 const GAME_TIME = 'GAME_TIME'
 const GAME_LOST = 'GAME_LOST'
+const GAME_PARAMS = 'GAME_PARAMS'
 
 export default {
   GAME_LOST,
+  GAME_PARAMS,
   GAME_TIME,
   GAME_WON,
   RESET_HAS_WON

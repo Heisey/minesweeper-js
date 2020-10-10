@@ -14,7 +14,7 @@ export default (state = initState, action) => {
     case keys.GAME_TIME:
       return {...state, time: action.payload}
 
-    case 'GAME_PARAMS':
+    case keys.GAME_PARAMS:
       return {...state, gameParams: action.payload}
 
     default:

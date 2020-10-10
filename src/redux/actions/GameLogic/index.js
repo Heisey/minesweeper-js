@@ -17,7 +17,7 @@ export const gameTime = (payload) => {
 export const generateParams = (difficulty) => {
   const payload = gameLogic.generateGameParams(difficulty)
   return {
-    type: 'GAME_PARAMS',
+    type: keys.GAME_PARAMS,
     payload
   }
 }

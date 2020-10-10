@@ -20,7 +20,6 @@ const Board = (props) => {
     board,
     flagTile,
     tileClickEvent,
-    params
   } = props;
 
   const {
@@ -48,7 +47,6 @@ const Board = (props) => {
           info={tileObj}
           flagTile={flagTile}
           tileClickEvent={tileClickEvent}
-          params={params}
           board={board}
         />
       )))}
