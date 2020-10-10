@@ -5,8 +5,11 @@
 
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux'
 
 // ???????????????????????? File Modules ??????????????????????????
+// ?? redux
+import {actions } from '../../redux'
 // ?? Components
 import { Game, Score } from '../../components' 
 import InfoBox from '../../components/InfoBox'
@@ -20,13 +23,17 @@ import './GamePage.scss'
 const GamePage = (props) => {
 
   const { handleShowLanding, gameParams, difficulty } = props
+
+  const {
+    gameWon
+  } = props
   
   const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bombs)
   const [bombsLeft, bombsLeftHandler] = useState(gameParams.bombs)
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
   const [gameLost, gameLostHandler] = useState(false)
-  const [gameWon, gameWonHandler] = useState(false)
+  const [REPLACE_ME, REPLACE_MEHandler] = useState(false)
   const [time, timeHandler] = useState(0)
 
   useEffect(() => {
@@ -53,10 +60,10 @@ const GamePage = (props) => {
   }, [gameLost])
 
   useEffect(() => {
-    if (gameWon) {
+    if (REPLACE_ME) {
       gameStartedHandler(false)
     }
-  }, [gameWon])
+  }, [REPLACE_ME])
 
   const calcScore = (bGuessed, bLeft, time) => {
     const wrongGuessesPoints = bGuessed - bLeft * 5
@@ -123,7 +130,7 @@ const GamePage = (props) => {
       })
     })
 
-    gameWonHandler(testForWin.every(tile => tile === true))
+    REPLACE_MEHandler(testForWin.every(tile => tile === true))
   }
 
   const handleFlagTile = (tileCoords) => {
@@ -159,7 +166,9 @@ const GamePage = (props) => {
     gameBoardHandler(() => updatedBoard)
 
     if (tempBombsGuessed === 0 && tempBombsLeft === 0) {
-      gameWonHandler(true)
+      REPLACE_MEHandler(true)
+      console.log('test')
+      gameWon()
     }
   }
 
@@ -168,14 +177,14 @@ const GamePage = (props) => {
     gameStartedHandler(false)
     timeHandler(0)
     gameLostHandler(false)
-    gameWonHandler(false)
+    REPLACE_MEHandler(false)
     bombsGuessedHandler(gameParams.bombs)
     bombsLeftHandler(gameParams.bombs)
   }
 
   return (
     <div className='GamePage'>
-      {gameWon && (
+      {REPLACE_ME && (
         <Score
           pointsScored={calcScore(bombsGuessed, bombsLeft, time)}
           restartGame={restartGame}
@@ -230,4 +239,8 @@ const GamePage = (props) => {
   )
 }
 
-export default GamePage
+export default connect(null, {
+  gameWon: actions.gameWon,
+  gameLost: actions.gameLost,
+  resetHasWon: actions.resetHasWon
+})(GamePage)

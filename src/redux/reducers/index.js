@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 
+import gameLogic from './GameLogic'
+
 export default combineReducers({
-  puppies: () => 'The puppies are here'
+  gameLogic
 })
