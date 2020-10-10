@@ -21,3 +21,18 @@ export const generateParams = (difficulty) => {
     payload
   }
 }
+
+export const generateBoard = params => {
+  const payload = gameLogic.generateTiles(params)
+  return {
+    type: 'GENERATE_BOARD',
+    payload
+  }
+}
+
+export const updateBoard = payload => {
+  return {
+    type: 'UPDATE_BOARD',
+    payload
+  }
+}

@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? redux
-import {actions } from '../../redux'
+import { actions } from '../../redux'
 
 // ?? Components
 import { Game, Score } from '../../components' 
@@ -26,18 +26,23 @@ const GamePage = (props) => {
   const { handleShowLanding } = props
 
   const {
+    gameBoard,
     gameLost,
     gameParams,
     gameTime,
     gameWon,
+    generateBoard,
     hasWon,
     resetHasWon,
-    time
+    time,
+    updateBoard
   } = props
   
   const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bombs)
   const [bombsLeft, bombsLeftHandler] = useState(gameParams.bombs)
-  const [gameBoard, gameBoardHandler] = useState([])
+
+  
+  // ~~ contained component state
   const [gameStarted, gameStartedHandler] = useState(false)
 
   useEffect(() => {
@@ -54,7 +59,7 @@ const GamePage = (props) => {
   }, [gameStarted, time])
 
   useEffect(() => {
-    gameBoardHandler(gameLogic.generateTiles(gameParams))
+    generateBoard(gameParams)
   }, [gameParams])
 
   useEffect(() => {
@@ -99,7 +104,7 @@ const GamePage = (props) => {
     if (curCell.bomb) {
       curCell.clicked = true
       curCell.exploded = true
-      gameBoardHandler(gameLogic.showAllBombs(board))
+      updateBoard(gameLogic.showAllBombs(board))
       gameLost()
       return 
     }
@@ -112,7 +117,7 @@ const GamePage = (props) => {
 
     curGame[grid[0]][grid[1]] = curCell
 
-    gameBoardHandler(curGame)
+    updateBoard(curGame)
 
     const testForWin = []
     
@@ -160,7 +165,7 @@ const GamePage = (props) => {
     }
     updatedBoard[tileCoords[0]][tileCoords[1]] = tile
 
-    gameBoardHandler(() => updatedBoard)
+    updateBoard(updatedBoard)
 
     if (tempBombsGuessed === 0 && tempBombsLeft === 0) {
       console.log('test')
@@ -169,7 +174,7 @@ const GamePage = (props) => {
   }
 
   const restartGame = () => {
-    gameBoardHandler(gameLogic.generateTiles(gameParams))
+    generateBoard(gameParams)
     gameStartedHandler(false)
     gameTime(0)
     resetHasWon()
@@ -232,6 +237,7 @@ const GamePage = (props) => {
 
 const mapStateTopProps = state => {
   return {
+    gameBoard: state.gameLogic.gameBoard,
     hasWon: state.gameLogic.hasWon,
     time: state.gameLogic.time,
     gameParams: state.gameLogic.gameParams
@@ -242,5 +248,7 @@ export default connect(mapStateTopProps, {
   gameWon: actions.gameWon,
   gameLost: actions.gameLost,
   gameTime: actions.gameTime,
-  resetHasWon: actions.resetHasWon
+  generateBoard: actions.generateBoard,
+  resetHasWon: actions.resetHasWon,
+  updateBoard: actions.updateBoard
 })(GamePage)

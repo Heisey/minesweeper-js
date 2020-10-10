@@ -3,7 +3,9 @@ import {
   gameLost,
   gameTime,
   gameWon,
-  resetHasWon
+  generateBoard,
+  resetHasWon,
+  updateBoard
 } from './GameLogic'
 
 export default {
@@ -11,5 +13,7 @@ export default {
   gameLost,
   gameTime,
   gameWon,
-  resetHasWon
+  generateBoard,
+  resetHasWon,
+  updateBoard
 }

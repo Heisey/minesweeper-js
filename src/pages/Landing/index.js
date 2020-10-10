@@ -20,13 +20,14 @@ const Landing = (props) => {
 
   const { handleShowGame } = props
 
+
   const { generateParams } = props
 
+  // ~~ contained component state
   const [primaryGameMenu, primaryGameMenuHandler] = useState(true)
-  const [scoreMenu, scoreMenuHandler] = useState(false)
   const [difficultyGameMenu, difficultyGameMenuHandler] = useState(false)
 
-  // ?? State Handlers
+  // ~~ State Handlers
   const handlePrimaryGameMenu = () => {
     primaryGameMenuHandler(false)
 
@@ -50,13 +51,7 @@ const Landing = (props) => {
     generateParams('easy')
   }
 
-  const handleScoreMenu = () => {
-    handleShowGame()
-    scoreMenuHandler(true)
-  }
-
-
-  // ?? Class Name Handlers
+  // ~~ Class Name Handlers
   const gameClassNameHandler = () => {
     let name = 'Landing__game--'
     if (primaryGameMenu) {
@@ -89,7 +84,7 @@ const Landing = (props) => {
       <div className={`Landing__score ${scoreClassNameHandler()}`}>
         <MenuButton 
           text='scores'
-          clickHandler={handleScoreMenu}
+          clickHandler={() => 'need to do something'}
         />
       </div>
       

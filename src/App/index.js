@@ -13,9 +13,6 @@ import GamePage from '../pages/GamePage';
 import Landing from '../pages/Landing'
 import { Score } from '../components'
 
-// ?? Utils
-import { gameLogic } from '../lib'
-
 // ?? Styles
 import './App.scss'
 

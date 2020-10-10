@@ -1,4 +1,4 @@
-import { initState, keys } from '../../'
+import { actions, initState, keys } from '../../'
 
 export default (state = initState, action) => {
   switch(action.type) {
@@ -16,6 +16,12 @@ export default (state = initState, action) => {
 
     case keys.GAME_PARAMS:
       return {...state, gameParams: action.payload}
+
+    case 'GENERATE_BOARD':
+      return {...state, gameBoard: action.payload}
+
+    case 'UPDATE_BOARD':
+      return {...state, gameBoard: action.payload}
 
     default:
       return state
