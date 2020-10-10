@@ -26,22 +26,24 @@ const GamePage = (props) => {
 
   const {
     gameLost,
+    gameTime,
     gameWon,
     hasWon,
-    resetHasWon
+    resetHasWon,
+    time
   } = props
   
   const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bombs)
   const [bombsLeft, bombsLeftHandler] = useState(gameParams.bombs)
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
-  const [time, timeHandler] = useState(0)
+  // const [time, timeHandler] = useState(0)
 
   useEffect(() => {
     const timeIntervals = {}
     if (gameStarted) {
       timeIntervals['gameTime'] = setInterval(() => {
-        timeHandler(time + 1)
+        gameTime(time + 1)
       }, 1000)
 
       return () => {
@@ -168,7 +170,7 @@ const GamePage = (props) => {
   const restartGame = () => {
     gameBoardHandler(gameLogic.generateTiles(gameParams))
     gameStartedHandler(false)
-    timeHandler(0)
+    gameTime(0)
     resetHasWon()
 
     bombsGuessedHandler(gameParams.bombs)
@@ -230,14 +232,15 @@ const GamePage = (props) => {
 }
 
 const mapStateTopProps = state => {
-  console.log(state)
   return {
-    hasWon: state.gameLogic.hasWon
+    hasWon: state.gameLogic.hasWon,
+    time: state.gameLogic.time
   }
 }
 
 export default connect(mapStateTopProps, {
   gameWon: actions.gameWon,
   gameLost: actions.gameLost,
+  gameTime: actions.gameTime,
   resetHasWon: actions.resetHasWon
 })(GamePage)
