@@ -25,15 +25,16 @@ const GamePage = (props) => {
   const { handleShowLanding, gameParams, difficulty } = props
 
   const {
-    gameWon
+    gameLost,
+    gameWon,
+    hasWon,
+    resetHasWon
   } = props
   
   const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bombs)
   const [bombsLeft, bombsLeftHandler] = useState(gameParams.bombs)
   const [gameBoard, gameBoardHandler] = useState([])
   const [gameStarted, gameStartedHandler] = useState(false)
-  const [gameLost, gameLostHandler] = useState(false)
-  const [REPLACE_ME, REPLACE_MEHandler] = useState(false)
   const [time, timeHandler] = useState(0)
 
   useEffect(() => {
@@ -54,16 +55,10 @@ const GamePage = (props) => {
   }, [gameParams])
 
   useEffect(() => {
-    if (gameLost) {
+    if (hasWon !== null) {
       gameStartedHandler(false)
     }
-  }, [gameLost])
-
-  useEffect(() => {
-    if (REPLACE_ME) {
-      gameStartedHandler(false)
-    }
-  }, [REPLACE_ME])
+  }, [hasWon])
 
   const calcScore = (bGuessed, bLeft, time) => {
     const wrongGuessesPoints = bGuessed - bLeft * 5
@@ -102,8 +97,7 @@ const GamePage = (props) => {
       curCell.clicked = true
       curCell.exploded = true
       gameBoardHandler(gameLogic.showAllBombs(board))
-      gameLostHandler(true)
-
+      gameLost()
       return 
     }
 
@@ -122,15 +116,15 @@ const GamePage = (props) => {
     curGame.forEach(row => {
       row.forEach(cell => {
         if (cell.clicked || cell.bomb) {
-          // console.log(cell)
           testForWin.push(true)
         } else {
           testForWin.push(false)
         }
       })
     })
-
-    REPLACE_MEHandler(testForWin.every(tile => tile === true))
+    if (testForWin.every(tile => tile === true)) {
+      gameWon()
+    }
   }
 
   const handleFlagTile = (tileCoords) => {
@@ -166,7 +160,6 @@ const GamePage = (props) => {
     gameBoardHandler(() => updatedBoard)
 
     if (tempBombsGuessed === 0 && tempBombsLeft === 0) {
-      REPLACE_MEHandler(true)
       console.log('test')
       gameWon()
     }
@@ -176,24 +169,21 @@ const GamePage = (props) => {
     gameBoardHandler(gameLogic.generateTiles(gameParams))
     gameStartedHandler(false)
     timeHandler(0)
-    gameLostHandler(false)
-    REPLACE_MEHandler(false)
+    resetHasWon()
+
     bombsGuessedHandler(gameParams.bombs)
     bombsLeftHandler(gameParams.bombs)
   }
 
   return (
     <div className='GamePage'>
-      {REPLACE_ME && (
+      {hasWon && (
         <Score
           pointsScored={calcScore(bombsGuessed, bombsLeft, time)}
           restartGame={restartGame}
         />
-        // <Game.Score 
-        //   calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
-        // />
       )}
-      {gameLost && <Game.Score 
+      {hasWon && <Game.Score 
           calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
       />}
       <div className="GamePage__buttons">
@@ -239,7 +229,14 @@ const GamePage = (props) => {
   )
 }
 
-export default connect(null, {
+const mapStateTopProps = state => {
+  console.log(state)
+  return {
+    hasWon: state.gameLogic.hasWon
+  }
+}
+
+export default connect(mapStateTopProps, {
   gameWon: actions.gameWon,
   gameLost: actions.gameLost,
   resetHasWon: actions.resetHasWon
