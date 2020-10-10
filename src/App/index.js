@@ -5,6 +5,7 @@
 
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React, { useState } from 'react';
+import { connect } from 'react-redux'
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Pages
@@ -18,11 +19,13 @@ import { gameLogic } from '../lib'
 // ?? Styles
 import './App.scss'
 
-const App = () => {
+const App = (props) => {
+
+  const { difficulty } = props
   
   const [showGame, showGameHandler] = useState(false)
   const [showLanding, showLandingHandler] = useState(true)
-  const [difficultySelected, difficultySelectedHandler] = useState('')
+  // const [difficultySelected, difficultySelectedHandler] = useState('')
   const [gameParams, gameParamsHandler] = useState({})
 
   const handleShowGame = () => {
@@ -35,8 +38,7 @@ const App = () => {
     showLandingHandler(true)
   }
 
-  const handleSelectedDifficulty = (difficulty) => {
-    difficultySelectedHandler(difficulty)
+  const handleSelectedDifficulty = () => {
     gameParamsHandler(gameLogic.generateGameParams(difficulty))
   }
 
@@ -58,7 +60,7 @@ const App = () => {
           <GamePage 
             handleShowLanding={handleShowLanding}
             gameParams={gameParams}
-            difficulty={difficultySelected}
+            // difficulty={difficultySelected}
           />
         </div>)
       }
@@ -68,4 +70,10 @@ const App = () => {
   )
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    difficulty: state.gameLogic.difficulty
+  }
+}
+
+export default connect(mapStateToProps)(App)

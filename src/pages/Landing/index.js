@@ -4,8 +4,12 @@
 
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 
 // ???????????????????????? File Modules ??????????????????????????
+// ?? redux
+import { actions } from '../../redux'
+
 // ?? Components
 import MenuButton from '../../components/MenuButton'
 
@@ -14,7 +18,9 @@ import './Landing.scss'
 
 const Landing = (props) => {
 
-  const { handleShowGame, selectDifficulty } = props
+  const { handleShowGame } = props
+
+  const { generateParams } = props
 
   const [primaryGameMenu, primaryGameMenuHandler] = useState(true)
   const [scoreMenu, scoreMenuHandler] = useState(false)
@@ -31,17 +37,17 @@ const Landing = (props) => {
 
   const handleHardGame = () => {
     handleShowGame()
-    selectDifficulty('hard')
+    generateParams('hard')
   }
 
   const handleMediumGame = () => {
     handleShowGame()
-    selectDifficulty('medium')
+    generateParams('medium')
   }
 
   const handleEasyGame = () => {
     handleShowGame()
-    selectDifficulty('easy')
+    generateParams('easy')
   }
 
   const handleScoreMenu = () => {
@@ -113,4 +119,6 @@ const Landing = (props) => {
   )
 }
 
-export default Landing
+export default connect(null, {
+  generateParams: actions.generateParams
+})(Landing)

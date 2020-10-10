@@ -1,4 +1,5 @@
 import {
+  generateParams,
   gameLost,
   gameTime,
   gameWon,
@@ -6,6 +7,7 @@ import {
 } from './GameLogic'
 
 export default {
+  generateParams,
   gameLost,
   gameTime,
   gameWon,

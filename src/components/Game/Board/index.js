@@ -5,6 +5,7 @@
 
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React from 'react';
+import { connect } from 'react-redux'
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? Components
@@ -19,15 +20,18 @@ const Board = (props) => {
     board,
     flagTile,
     tileClickEvent,
-    difficulty,
     params
   } = props;
 
+  const {
+    gameParams
+  } = props
+
   const gameBoardClassNames = () => {
     let returnValue = 'GameBoard GameBoard'
-    if (difficulty === 'medium') {
+    if (gameParams.difficulty === 'medium') {
       returnValue = returnValue + '--medium'
-    } else if (difficulty === 'hard') {
+    } else if (gameParams.difficulty === 'hard') {
       returnValue = returnValue + '--hard'
     } else {
       returnValue = returnValue + '--easy'
@@ -52,4 +56,11 @@ const Board = (props) => {
   )
 }
 
-export default Board
+const mapStateToProps = (state) => {
+
+  return {
+    gameParams: state.gameLogic.gameParams
+  }
+}
+
+export default connect(mapStateToProps)(Board)

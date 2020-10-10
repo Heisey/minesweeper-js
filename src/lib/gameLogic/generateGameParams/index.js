@@ -11,18 +11,23 @@ const generateGameParams = (difficulty) => {
   const gameParams = {}
 
   if (difficulty === 'medium') {
+    gameParams.difficulty = difficulty
     gameParams.rows = 16
     gameParams.cols = 16
     gameParams.bombs = 40
   } else if (difficulty === 'hard') {
+    gameParams.difficulty = difficulty
     gameParams.rows = 30
     gameParams.cols = 16
     gameParams.bombs = 99
   } else {
+    gameParams.difficulty = difficulty
     gameParams.rows = 9
     gameParams.cols = 9
     gameParams.bombs = 10
   }
+
+  console.log('params', gameParams)
 
   return gameParams
 }

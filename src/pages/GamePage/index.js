@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 // ???????????????????????? File Modules ??????????????????????????
 // ?? redux
 import {actions } from '../../redux'
+
 // ?? Components
 import { Game, Score } from '../../components' 
 import InfoBox from '../../components/InfoBox'
@@ -22,10 +23,11 @@ import './GamePage.scss'
 
 const GamePage = (props) => {
 
-  const { handleShowLanding, gameParams, difficulty } = props
+  const { handleShowLanding } = props
 
   const {
     gameLost,
+    gameParams,
     gameTime,
     gameWon,
     hasWon,
@@ -207,7 +209,6 @@ const GamePage = (props) => {
       </div>
 
       <Game.Board 
-        difficulty={difficulty}
         board={gameBoard}
         tileClickEvent={handleTileClick}
         flagTile={handleFlagTile}
@@ -233,7 +234,8 @@ const GamePage = (props) => {
 const mapStateTopProps = state => {
   return {
     hasWon: state.gameLogic.hasWon,
-    time: state.gameLogic.time
+    time: state.gameLogic.time,
+    gameParams: state.gameLogic.gameParams
   }
 }
 
