@@ -59,7 +59,6 @@ const baseColor = props => {
     case 1:
       return 'black'
     case 2:
-      console.log('puppies')
       return 'red'
     case 3:
       return 'orange'

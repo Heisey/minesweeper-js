@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
 import Game from '..'
 
 // ?? Styles
-import './GameBoard.scss'
+import styles from './styles'
 
 const Board = (props) => {
 
@@ -40,7 +40,9 @@ const Board = (props) => {
   }
 
   return (
-    <div className={gameBoardClassNames()}>
+    <styles.Base
+      difficulty={gameParams.difficulty}
+    >
       {board.map(row => row.map(tileObj => (
         <Game.Tile 
           key={`${tileObj.grid}`}
@@ -50,7 +52,7 @@ const Board = (props) => {
           board={board}
         />
       )))}
-    </div>
+    </styles.Base>
   )
 }
 
