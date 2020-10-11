@@ -9,6 +9,7 @@ import React from 'react';
 // ???????????????????????? File Modules ??????????????????????????
 
 // ?? Styles
+import styles from './styles'
 import './InfoBox.scss'
 
 const InfoBox = (props) => {
@@ -17,15 +18,16 @@ const InfoBox = (props) => {
     info,
     isBomb
   } = props
+
   return (
-    <div className='InfoBox'>
-      {isBomb && <div className="InfoBox__img"><i className="fas fa-bomb"></i></div>}
-      <div className="InfoBox__time">
-        <span>
-          {info}
-        </span>
-      </div>
-    </div>
+    <styles.Base>
+      {isBomb && <styles.Info>
+        <i className='fas fa-bomb'></i>
+      </styles.Info>}
+      <styles.Time>
+        {info}
+      </styles.Time>
+    </styles.Base>
   )
 }
 

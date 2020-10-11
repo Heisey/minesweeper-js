@@ -26,19 +26,6 @@ const Board = (props) => {
     gameParams
   } = props
 
-  const gameBoardClassNames = () => {
-    let returnValue = 'GameBoard GameBoard'
-    if (gameParams.difficulty === 'medium') {
-      returnValue = returnValue + '--medium'
-    } else if (gameParams.difficulty === 'hard') {
-      returnValue = returnValue + '--hard'
-    } else {
-      returnValue = returnValue + '--easy'
-    }
-
-    return returnValue
-  }
-
   return (
     <styles.Base
       difficulty={gameParams.difficulty}
