@@ -9,6 +9,7 @@ import React from 'react';
 // ???????????????????????? File Modules ??????????????????????????
 
 // ?? Styles
+import styles from './styles'
 import './GameButton.scss'
 
 const Button = (props) => {
@@ -18,12 +19,17 @@ const Button = (props) => {
     icon
   } = props
   return (
-    <div 
-      className='GameButton'
+    <styles.Base
       onClick={buttonClickEvent}
     >
       <i className={`fas fa-${icon}`}></i>
-    </div>
+    </styles.Base>
+    // <div 
+    //   className='GameButton'
+    //   onClick={buttonClickEvent}
+    // >
+    //   <i className={`fas fa-${icon}`}></i>
+    // </div>
   )
 }
 
