@@ -37,7 +37,7 @@ const Tile = (props) => {
 
   return (
     <styles.Base
-      clicked={info.clicked}
+      clicked={info.clicked && !info.exploded}
       exploded={info.exploded}
       onClick={handleTileClickEvent}
       onContextMenu={handleRightClickEvent}

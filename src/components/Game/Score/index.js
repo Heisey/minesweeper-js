@@ -10,16 +10,16 @@ import React from 'react';
 // ?? Components
 
 // ?? Styles
-import './GameScore.scss'
+import styles from './styles'
 
 const Score = (props) => {
 
   const { calcScore } = props
 
   return (
-    <div className='GameScore'>
+    <styles.Base>
       {`YOU SCORED: ${calcScore()} POINTS`}
-    </div>
+    </styles.Base>
   )
 }
 
