@@ -6,6 +6,7 @@
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React from 'react';
 import { connect } from 'react-redux'
+import styles from './styles'
 
 // ???????????????????????? File Modules ??????????????????????????
 
@@ -35,10 +36,13 @@ const Tile = (props) => {
   }
 
   return (
-    <div 
-      className={`GameTile ${info.clicked && 'GameTile__clicked'} ${info.exploded && 'GameTile__boom'}`}
+    <styles.Base
+      clicked={info.clicked}
+      exploded={info.exploded}
       onClick={handleTileClickEvent}
       onContextMenu={handleRightClickEvent}
+      flagged={info.flagged}
+      number={info.number}
     >
       {info.clicked && (<div className="GameTile__info">
         {info.bomb ? <i className="fas fa-bomb"></i> : info.number}
@@ -49,7 +53,7 @@ const Tile = (props) => {
           <i className="fas fa-flag"></i>
         </div>
       )}
-    </div>
+    </styles.Base>
   )
 }
 
@@ -60,3 +64,20 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(Tile)
+
+
+    // <div 
+    //   className={`GameTile ${info.clicked && 'GameTile__clicked'} ${info.exploded && 'GameTile__boom'}`}
+    //   onClick={handleTileClickEvent}
+    //   onContextMenu={handleRightClickEvent}
+    // >
+      // {info.clicked && (<div className="GameTile__info">
+      //   {info.bomb ? <i className="fas fa-bomb"></i> : info.number}
+      // </div>)}
+      
+      // {(info.flagged && !info.clicked) && (
+      //   <div className="GameTile__flagged">
+      //     <i className="fas fa-flag"></i>
+      //   </div>
+      // )}
+    // </div>

@@ -27,8 +27,6 @@ const generateGameParams = (difficulty) => {
     gameParams.bombs = 10
   }
 
-  console.log('params', gameParams)
-
   return gameParams
 }
 

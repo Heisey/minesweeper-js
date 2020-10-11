@@ -16,7 +16,7 @@ import { Game, Score } from '../../components'
 import InfoBox from '../../components/InfoBox'
 
 // ?? Utility
-import { gameLogic } from '../../lib'
+import { gameLogic, scoreLogic } from '../../lib'
 
 // ?? Styles
 import './GamePage.scss'
@@ -56,28 +56,17 @@ const GamePage = (props) => {
         clearInterval(timeIntervals.gameTime)
       }
     } 
-  }, [gameStarted, time])
+  }, [gameTime, gameStarted, time])
 
   useEffect(() => {
     generateBoard(gameParams)
-  }, [gameParams])
+  }, [gameParams, generateBoard])
 
   useEffect(() => {
     if (hasWon !== null) {
       gameStartedHandler(false)
     }
   }, [hasWon])
-
-  const calcScore = (bGuessed, bLeft, time) => {
-    const wrongGuessesPoints = bGuessed - bLeft * 5
-    
-    let finalScore = ((40 - bGuessed) * 10) - wrongGuessesPoints - (time * 2)
-
-    if (finalScore < 0) {
-      finalScore = 0
-    }
-    return finalScore
-  }
 
   const handleTileClick = (grid, board, params) => {
     
@@ -135,6 +124,7 @@ const GamePage = (props) => {
     }
   }
 
+// ~~ NEEDS TO BE REFACTORED IN TO GAMELOGIC
   const handleFlagTile = (tileCoords) => {
     const updatedBoard = gameBoard.slice();
 
@@ -168,7 +158,6 @@ const GamePage = (props) => {
     updateBoard(updatedBoard)
 
     if (tempBombsGuessed === 0 && tempBombsLeft === 0) {
-      console.log('test')
       gameWon()
     }
   }
@@ -187,12 +176,12 @@ const GamePage = (props) => {
     <div className='GamePage'>
       {hasWon && (
         <Score
-          pointsScored={calcScore(bombsGuessed, bombsLeft, time)}
+          pointsScored={scoreLogic.calcScore(bombsGuessed, bombsLeft, time)}
           restartGame={restartGame}
         />
       )}
       {hasWon && <Game.Score 
-          calcScore={() => calcScore(bombsGuessed, bombsLeft, time)}
+          calcScore={() => scoreLogic.calcScore(bombsGuessed, bombsLeft, time)}
       />}
       <div className="GamePage__buttons">
         {/* // ?? Go Back to Main Menu */}
