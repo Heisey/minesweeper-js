@@ -10,7 +10,6 @@ import React from 'react';
 
 // ?? Styles
 import styles from './styles'
-import './InfoBox.scss'
 
 const InfoBox = (props) => {
 

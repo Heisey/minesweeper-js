@@ -1,4 +1,6 @@
-.MenuButton {
+import styled from 'styled-components/macro'
+
+export const Base = styled.div`
   background-color: limegreen;
   width: 300px;
   height: 150px;
@@ -16,4 +18,4 @@
     0px 2px 0 1px #333;;
     background-color: palevioletred;
   }
-}
+`
