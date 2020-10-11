@@ -19,7 +19,7 @@ import InfoBox from '../../components/InfoBox'
 import { gameLogic, scoreLogic } from '../../lib'
 
 // ?? Styles
-import './GamePage.scss'
+import styles from './styles'
 
 const GamePage = (props) => {
 
@@ -173,7 +173,7 @@ const GamePage = (props) => {
   }
 
   return (
-    <div className='GamePage'>
+    <styles.GamePage>
       {hasWon && (
         <Score
           pointsScored={scoreLogic.calcScore(bombsGuessed, bombsLeft, time)}
@@ -183,7 +183,7 @@ const GamePage = (props) => {
       {hasWon && <Game.Score 
           calcScore={() => scoreLogic.calcScore(bombsGuessed, bombsLeft, time)}
       />}
-      <div className="GamePage__buttons">
+      <styles.GamePageButtons>
         {/* // ?? Go Back to Main Menu */}
         <Game.Button 
           icon="arrow-left"
@@ -200,7 +200,7 @@ const GamePage = (props) => {
         {/* <GameButton 
           icon="question"
         /> */}
-      </div>
+      </styles.GamePageButtons>
 
       <Game.Board 
         board={gameBoard}
@@ -208,7 +208,7 @@ const GamePage = (props) => {
         flagTile={handleFlagTile}
       />
 
-      <div className="GamePage__infoBoxes">
+      <styles.GamePageInfoBoxes>
         {/* // ?? Mines Left */}
         <InfoBox 
           info={bombsLeft}
@@ -219,8 +219,8 @@ const GamePage = (props) => {
         <InfoBox 
           info={time}
         />
-      </div>
-    </div>
+      </styles.GamePageInfoBoxes>
+    </styles.GamePage>
   )
 }
 
