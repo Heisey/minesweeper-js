@@ -5,7 +5,7 @@ const baseGridTemplateColumns = props => {
     return 'repeat(9, 1fr)'
   } else if (props.difficulty === 'medium') {
     return 'repeat(16, 1fr)'
-  } else if (props.hard === 'hard') {
+  } else if (props.difficulty === 'hard') {
     return 'repeat(16, 1fr)'
   }
 }

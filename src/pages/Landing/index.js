@@ -14,7 +14,7 @@ import { actions } from '../../redux'
 import MenuButton from '../../components/MenuButton'
 
 // ?? Styles
-import './Landing.scss'
+import styles from './styles'
 
 const Landing = (props) => {
 
@@ -51,66 +51,53 @@ const Landing = (props) => {
     generateParams('easy')
   }
 
-  // ~~ Class Name Handlers
-  const gameClassNameHandler = () => {
-    let name = 'Landing__game--'
-    if (primaryGameMenu) {
-      return name + 'begin'
-    } else {
-      return name + 'end'
-    }
-  }
-
-  const scoreClassNameHandler = () => {
-    let name = 'Landing__score--'
-    if (primaryGameMenu) {
-      return name + 'begin'
-    } else {
-      return name + 'end'
-    }
-  }
-
-  
-
   return (
-    <div className="Landing">
-      <div className={`Landing__game ${gameClassNameHandler()}`}>
+    <styles.Landing>
+      <styles.LandingGameMenuButton
+        end={primaryGameMenu}
+      >
         <MenuButton 
           clickHandler={handlePrimaryGameMenu}
           text='start'
         />
-      </div>
-
-      <div className={`Landing__score ${scoreClassNameHandler()}`}>
+      </styles.LandingGameMenuButton>
+    
+      <styles.LandingScoreMenuButton
+        end={primaryGameMenu}
+      >
         <MenuButton 
           text='scores'
           clickHandler={() => 'need to do something'}
         />
-      </div>
-      
+      </styles.LandingScoreMenuButton>
+
       {difficultyGameMenu && (
-        <div className='Landing__gameDifficulty'>
-          <div className={`Landing__gameDifficulty--easy${difficultyGameMenu ? 'End' : 'Start'}`}>
+        <>
+          <styles.LandingGameMenuEasyButton>
             <MenuButton 
               text='easy'
               clickHandler={handleEasyGame}
             />
-          </div>
-          <div className={`Landing__gameDifficulty--medium${difficultyGameMenu ? 'End' : 'Start'}`}>
+          </styles.LandingGameMenuEasyButton>
+
+          <styles.LandingGameMenuMediumButton>
             <MenuButton 
               text='medium'
               clickHandler={handleMediumGame}
             />
-          </div>
-          <div className={`Landing__gameDifficulty--hard${difficultyGameMenu ? 'End' : 'Start'}`}>
+          </styles.LandingGameMenuMediumButton>
+
+          <styles.LandingGameMenuHardButton
+            end={primaryGameMenu}
+          >
             <MenuButton 
               text='hard'
               clickHandler={handleHardGame}
             />
-          </div>
-        </div>
+          </styles.LandingGameMenuHardButton>
+        </>
       )}
-    </div>
+    </styles.Landing>
   )
 }
 
