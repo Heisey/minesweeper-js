@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const SkyScraper = styled.div`
   position: absolute;
@@ -6,7 +6,7 @@ export const SkyScraper = styled.div`
   right: -50%;
   width: 200px;
   height: 600px;
-  background-color: rgba(255, 255, 255, 0.2)
+  /* background-color: rgba(255, 255, 255, 0.2); */
 `
 
 export const BackBottomLeftLeg = styled.div`
@@ -62,6 +62,18 @@ export const CenterSpire = styled.div`
   transform: translateX(-50%);
   bottom: 0;
   z-index: 100;
+
+  &::after {
+    position: absolute;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: #E05939;
+    clip-path: polygon(32% 94%, 69% 90%, 100% 100%, 0 100%, 0 93.8%);
+    z-index: 105;
+    left: -2px;
+    bottom: -2px;
+  }
 `
 
 export const TempBar = styled.div`
