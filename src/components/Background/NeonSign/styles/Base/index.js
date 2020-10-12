@@ -45,6 +45,7 @@ export const BoardFront = styled.div`
   border-radius: 50%;
   /* border made of light bulbs */
   box-shadow:
+    /* Top Row Lights */
     -184px 15px 0 0 white, -185px 15px 0 -1px white, -186px 16px 0 -2px white, -187px 16px 0 -2px white, -187px 16px 3px -2px grey,
     -153px 15px 0 0 white, -154px 15px 0 -1px white, -155px 16px 0 -2px white, -156px 16px 0 -2px white, -156px 16px 3px -2px grey, 
     -122px 15px 0 0 white, -121px 15px 0 -1px white, -120px 16px 0 -2px white, -119px 16px 0 -2px white, -119px 16px 3px -2px grey, 
@@ -57,19 +58,12 @@ export const BoardFront = styled.div`
     101px 15px 0 0 white, 100px 15px 0 -1px white, 99px 16px 0 -2px white, 98px 16px 0 -2px white, 98px 16px 3px -2px grey, 
     132px 15px 0 0 white, 131px 15px 0 -1px white, 130px 16px 0 -2px white, 129px 16px 0 -2px white, 129px 16px 3px -2px grey, 
     163px 15px 0 0 white, 162px 15px 0 -1px white, 161px 16px 0 -2px white, 160px 16px 0 -2px white, 160px 16px 3px -2px grey,
-    /* 183px 15px 0 0 white, 182px 15px 0 -1px white, 181px 16px 0 -2px white, 180px 16px 0 -2px white, 180px 16px 3px -2px grey,  */
-    360px 15px 0 0 white, 359px 15px 0 -1px white, 358px 16px 0 -2px white, 357px 16px 0 -2px white, 357px 16px 3px -2px grey, 
-    390px 15px 0 0 white, 389px 15px 0 -1px white, 388px 16px 0 -2px white, 387px 16px 0 -2px white, 387px 16px 3px -2px grey, 
-    420px 15px 0 0 white, 419px 15px 0 -1px white, 418px 16px 0 -2px white, 417px 16px 0 -2px white, 417px 16px 3px -2px grey, 
-    450px 15px 0 0 white, 449px 15px 0 -1px white, 448px 16px 0 -2px white, 447px 16px 0 -2px white, 447px 16px 3px -2px grey, 
-    480px 15px 0 0 white, 479px 15px 0 -1px white, 478px 16px 0 -2px white, 477px 16px 0 -2px white, 477px 16px 3px -2px grey,
-    510px 15px 0 0 white, 509px 15px 0 -1px white, 508px 16px 0 -2px white, 507px 16px 0 -2px white, 507px 16px 3px -2px grey, 
-
-    510px 45px 0 0 white, 509px 45px 0 -1px white, 508px 46px 0 -2px white, 507px 46px 0 -2px white, 507px 46px 3px -2px grey, 
-    510px 75px 0 0 white, 509px 75px 0 -1px white, 508px 76px 0 -2px white, 507px 76px 0 -2px white, 507px 76px 3px -2px grey, 
-    510px 105px 0 0 white, 509px 105px 0 -1px white, 508px 106px 0 -2px white, 507px 106px 0 -2px white, 507px 106px 3px -2px grey, 
-    510px 135px 0 0 white, 509px 135px 0 -1px white, 508px 136px 0 -2px white, 507px 136px 0 -2px white, 507px 136px 3px -2px grey, 
-    510px 165px 0 0 white, 509px 165px 0 -1px white, 508px 166px 0 -2px white, 507px 166px 0 -2px white, 507px 166px 3px -2px grey,
+  
+    163px 43px 0 0 white, 162px 43px 0 -1px white, 161px 44px 0 -2px white, 160px 44px 0 -2px white, 160px 44px 3px -2px grey, 
+    163px 71px 0 0 white, 162px 71px 0 -1px white, 161px 72px 0 -2px white, 160px 72px 0 -2px white, 160px 72px 3px -2px grey, 
+    163px 99px 0 0 white, 162px 99px 0 -1px white, 161px 100px 0 -2px white, 160px 100px 0 -2px white, 160px 100px 3px -2px grey, 
+    163px 127px 0 0 white, 162px 127px 0 -1px white, 161px 128px 0 -2px white, 160px 128px 0 -2px white, 160px 128px 3px -2px grey, 
+    163px 155px 0 0 white, 162px 155px 0 -1px white, 161px 156px 0 -2px white, 160px 156px 0 -2px white, 160px 156px 3px -2px grey,
 
     480px 165px 0 0 white, 479px 165px 0 -1px white, 478px 166px 0 -2px white, 477px 166px 0 -2px white, 477px 166px 3px -2px grey, 
     450px 165px 0 0 white, 449px 165px 0 -1px white, 448px 166px 0 -2px white, 447px 166px 0 -2px white, 447px 166px 3px -2px grey, 
@@ -81,8 +75,8 @@ export const BoardFront = styled.div`
     270px 165px 0 0 white, 269px 165px 0 -1px white, 268px 166px 0 -2px white, 267px 166px 0 -2px white, 267px 166px 3px -2px grey, 
     240px 165px 0 0 white, 239px 165px 0 -1px white, 238px 166px 0 -2px white, 237px 166px 0 -2px white, 237px 166px 3px -2px grey, 
     210px 165px 0 0 white, 209px 165px 0 -1px white, 208px 166px 0 -2px white, 207px 166px 0 -2px white, 207px 166px 3px -2px grey, 
-    180px 165px 0 0 white, 179px 165px 0 -1px white, 178px 166px 0 -2px white, 177px 166px 0 -2px white, 177px 166px 3px -2px grey, 
-    150px 165px 0 0 white, 149px 165px 0 -1px white, 148px 166px 0 -2px white, 147px 166px 0 -2px white, 147px 166px 3px -2px grey, 
+    /* 180px 165px 0 0 white, 179px 165px 0 -1px white, 178px 166px 0 -2px white, 177px 166px 0 -2px white, 177px 166px 3px -2px grey,  */
+    /* 150px 165px 0 0 white, 149px 165px 0 -1px white, 148px 166px 0 -2px white, 147px 166px 0 -2px white, 147px 166px 3px -2px grey,  */
     120px 165px 0 0 white, 119px 165px 0 -1px white, 118px 166px 0 -2px white, 117px 166px 0 -2px white, 117px 166px 3px -2px grey, 
     90px 165px 0 0 white, 89px 165px 0 -1px white, 88px 166px 0 -2px white, 87px 166px 0 -2px white, 87px 166px 3px -2px grey, 
     60px 165px 0 0 white, 59px 165px 0 -1px white, 58px 166px 0 -2px white, 57px 166px 0 -2px white, 57px 166px 3px -2px grey, 
