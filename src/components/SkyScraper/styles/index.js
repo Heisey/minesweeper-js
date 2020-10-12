@@ -5,7 +5,10 @@ import {
   FrontBottomLeftLeg,
   FrontBottomRightLeg,
   CenterSpire,
-  TempBar
+  BaseUpperTower,
+  RoofUpperTower,
+  UpperTower,
+  ObservationDeck
 } from './Base'
 
 export default {
@@ -15,5 +18,8 @@ export default {
   FrontBottomLeftLeg,
   FrontBottomRightLeg,
   CenterSpire,
-  TempBar
+  BaseUpperTower,
+  RoofUpperTower,
+  UpperTower,
+  ObservationDeck
 }

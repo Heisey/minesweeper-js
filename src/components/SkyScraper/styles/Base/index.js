@@ -6,7 +6,7 @@ export const SkyScraper = styled.div`
   right: -50%;
   width: 200px;
   height: 600px;
-  /* background-color: rgba(255, 255, 255, 0.2); */
+  background-color: rgba(255, 255, 255, 0.2);
 `
 
 export const BackBottomLeftLeg = styled.div`
@@ -56,30 +56,91 @@ export const FrontBottomRightLeg = styled.div`
 export const CenterSpire = styled.div`
   position: absolute;
   width: 35px;
-  height: 60%;
+  height: 50%;
   background-color: black;
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
   z-index: 100;
 
-  &::after {
+  &::before {
     position: absolute;
     content: '';
     height: 100%;
     width: 100%;
     background-color: #E05939;
-    clip-path: polygon(32% 94%, 69% 90%, 100% 100%, 0 100%, 0 93.8%);
+    clip-path: polygon(32% 94%, 69% 90%, 100% 100%, 0 100%, 0 95%);
     z-index: 105;
     left: -2px;
     bottom: -2px;
   }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: calc(100% + 2px);
+    height: 50px;
+    background-color: #B8ABB0;
+    left: -1px;
+    top: 18%;
+    z-index: 110;
+  }
 `
 
-export const TempBar = styled.div`
+export const BaseUpperTower = styled.div`
+  position: absolute;
+  height: 10px;
+  width: 90%;
+  background-color: #B8ABB0;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  top: 49%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 105;
+`
+
+export const RoofUpperTower = styled.div`
+  position: absolute;
+  height: 50px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #B8ABB0;
+  clip-path: polygon(
+    0 100%,
+    40% 50%,
+    40% 40%,
+    30% 40%,
+    30% 30%,
+
+    70% 30%,
+    70% 40%,
+    61% 40%,
+    61% 50%,
+    100% 100%
+  );
+  top: 33.5%;
+  z-index: 105;
+`
+
+export const UpperTower = styled.div`
+  position: absolute;
+  background-color: black;
+  width: 80%;
+  height: 8%;
+  top: 41.8%;
+  left: 50%;
+  transform: translateX(-50%);
+`
+
+export const ObservationDeck = styled.div`
   position: absolute;
   width: 100%;
   height: 10px;
-  top: 0;
-  background-color: blue;
+  top: 44%;
+  background-color: #B8ABB0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  z-index: 105;
 `
