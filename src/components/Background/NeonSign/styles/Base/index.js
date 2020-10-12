@@ -67,7 +67,7 @@ export const BoardFront = styled.div`
 
     /* Bottom Row */
     163px 155px 0 0 white, 162px 155px 0 -1px white, 161px 156px 0 -2px white, 160px 156px 0 -2px white, 160px 156px 3px -2px grey,
-    132px 155px 0 0 white, 131px 155px 0 -1px white, 130px 156px 0 -2px white, 129px 156px 0 -2px white, 29px 156px 3px -2px grey, 
+    132px 155px 0 0 white, 131px 155px 0 -1px white, 130px 156px 0 -2px white, 129px 156px 0 -2px white, 129px 156px 3px -2px grey, 
     101px 155px 0 0 white, 100px 155px 0 -1px white, 99px 156px 0 -2px white, 98px 156px 0 -2px white, 98px 156px 3px -2px grey, 
     70px 155px 0 0 white, 69px 155px 0 -1px white, 68px 156px 0 -2px white, 67px 156px 0 -2px white, 67px 156px 3px -2px grey, 
     39px 155px 0 0 white, 38px 155px 0 -1px white, 37px 156px 0 -2px white, 36px 156px 0 -2px white, 36px 156px 3px -2px grey, 
@@ -77,11 +77,12 @@ export const BoardFront = styled.div`
     -91px 155px 0 0 white, -90px 155px 0 -1px white, -89px 156px 0 -2px white, -88px 156px 0 -2px white, -88px 156px 3px -2px grey, 
     -122px 155px 0 0 white, -121px 155px 0 -1px white, -120px 156px 0 -2px white, -119px 156px 0 -2px white, -119px 156px 3px -2px grey, 
     -153px 155px 0 0 white, -154px 155px 0 -1px white, -155px 156px 0 -2px white, -156px 156px 0 -2px white, -156px 156px 3px -2px grey, 
-    -184px 155px 0 0 white, -85px 155px 0 -1px white, -186px 156px 0 -2px white, -187px 156px 0 -2px white, -187px 156px 3px -2px grey, 
+    -184px 155px 0 0 white, -185px 155px 0 -1px white, -186px 156px 0 -2px white, -187px 156px 0 -2px white, -187px 156px 3px -2px grey, 
 
-    -30px 135px 0 0 white, -31px 135px 0 -1px white, -32px 136px 0 -2px white, -33px 136px 0 -2px white, -33px 136px 3px -2px grey, 
-    -30px 105px 0 0 white, -31px 105px 0 -1px white, -32px 106px 0 -2px white, -33px 106px 0 -2px white, -33px 106px 3px -2px grey, 
-    -30px 75px 0 0 white, -31px 75px 0 -1px white, -32px 76px 0 -2px white, -33px 76px 0 -2px white, -33px 76px 3px -2px grey, 
-    -30px 45px 0 0 white, -31px 45px 0 -1px white, -32px 46px 0 -2px white, -33px 46px 0 -2px white, -33px 46px 3px -2px grey;
+    /* Left Row */
+    -184px 127px 0 0 white, -185px 127px 0 -1px white, -186px 128px 0 -2px white, -187px 128px 0 -2px white, -187px 128px 3px -2px grey, 
+    -184px 99px 0 0 white, -185px 99px 0 -1px white, -186px 100px 0 -2px white, -187px 100px 0 -2px white, -187px 100px 3px -2px grey, 
+    -184px 71px 0 0 white, -185px 71px 0 -1px white, -186px 72px 0 -2px white, -187px 72px 0 -2px white, -187px 72px 3px -2px grey, 
+    -184px 43px 0 0 white, -185px 43px 0 -1px white, -186px 44px 0 -2px white, -187px 44px 0 -2px white, -187px 44px 3px -2px grey;
 }
 `
