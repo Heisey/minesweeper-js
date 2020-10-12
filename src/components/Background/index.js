@@ -1,7 +1,6 @@
-import styled from "styled-components";
 
-import { default as Layer1 } from './Back'
+import { default as Scenery } from './Scenery'
 
 export default {
-  Layer1
+  Scenery
 }

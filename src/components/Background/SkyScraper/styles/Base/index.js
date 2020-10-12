@@ -11,11 +11,11 @@ export const SkyScraper = styled.div`
 export const BackBottomLeftLeg = styled.div`
   position: absolute;
   width: 10px;
-  height: 175px;
+  height: 215px;
   background-color: #B8ABB0;
-  transform: rotate(30deg);
-  bottom: 9.2%;
-  left: 20%;
+  transform: rotate(22.5deg);
+  bottom: 2%;
+  left:20%;
   z-index: 95;
 `
 
@@ -33,11 +33,11 @@ export const FrontBottomLeftLeg = styled.div`
 export const BackBottomRightLeg = styled.div`
   position: absolute;
   width: 10px;
-  height: 192px;
+  height: 212px;
   background-color: #B8ABB0;
   transform: rotate(-22.5deg);
-  bottom: 4.5%;
-  right: 22%;
+  bottom: 2.5%;
+  right: 20%;
   z-index: 95;
 `
 

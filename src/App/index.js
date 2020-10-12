@@ -31,7 +31,7 @@ const App = () => {
   }
   return (
     <div className='App'>
-      <Background.Layer1 />4
+      <Background.Scenery />
       <h1 className="App__title">
         <span className="App__title--first">MARS</span>SWEEPER
       </h1>

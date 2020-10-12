@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import { actions } from '../../redux'
 
 // ?? Components
-import { SkyScraper } from '../../components'
+// import { SkyScraper } from '../../components'
 import MenuButton from '../../components/MenuButton'
 
 // ?? Styles
@@ -54,7 +54,7 @@ const Landing = (props) => {
 
   return (
     <styles.Landing>
-    <SkyScraper />
+    {/* <SkyScraper /> */}
       <styles.LandingGameMenuButton
         end={primaryGameMenu}
       >
