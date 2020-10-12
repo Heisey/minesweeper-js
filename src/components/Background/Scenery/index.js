@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './styles'
 import SkyScraper from '../SkyScraper'
+import NeonSign from '../NeonSign'
 
 const Scenery = () => {
 
@@ -12,6 +13,7 @@ const Scenery = () => {
         <SkyScraper />
       </styles.ScenerySkyScraper>
       <styles.SceneryLayer3 />
+      <NeonSign />
     </>
   )
 }
