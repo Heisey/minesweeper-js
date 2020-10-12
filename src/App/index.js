@@ -15,7 +15,7 @@ import Landing from '../pages/Landing'
 // ?? Styles
 import './App.scss'
 
-const App = (props) => {
+const App = () => {
 
   const [showGame, showGameHandler] = useState(false)
   const [showLanding, showLandingHandler] = useState(true)

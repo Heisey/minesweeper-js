@@ -11,16 +11,17 @@ import { connect } from 'react-redux'
 import { actions } from '../../redux'
 
 // ?? Components
+import { SkyScraper } from '../../components'
 import MenuButton from '../../components/MenuButton'
 
 // ?? Styles
 import styles from './styles'
 
 const Landing = (props) => {
-
+  // ~~ Parent Props
   const { handleShowGame } = props
 
-
+  // ~~ Redux Props
   const { generateParams } = props
 
   // ~~ contained component state
@@ -53,6 +54,7 @@ const Landing = (props) => {
 
   return (
     <styles.Landing>
+    <SkyScraper />
       <styles.LandingGameMenuButton
         end={primaryGameMenu}
       >
