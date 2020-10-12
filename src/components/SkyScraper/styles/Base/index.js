@@ -6,7 +6,6 @@ export const SkyScraper = styled.div`
   right: -50%;
   width: 200px;
   height: 600px;
-  background-color: rgba(255, 255, 255, 0.2);
 `
 
 export const BackBottomLeftLeg = styled.div`
@@ -50,6 +49,50 @@ export const FrontBottomRightLeg = styled.div`
   transform: rotate(-7.5deg);
   bottom: 0;
   right: 35%;
+  z-index: 105;
+`
+
+export const FrontTopRightLeg = styled.div`
+  position: absolute;
+  width: 10px;
+  height: 65px;
+  background-color: #B8ABB0;
+  transform: rotate(17.5deg);
+  top: 50%;
+  right: 37%;
+  z-index: 105;
+`
+
+export const FrontTopLeftLeg = styled.div`
+  position: absolute;
+  width: 10px;
+  height: 65px;
+  background-color: #B8ABB0;
+  transform: rotate(-17.5deg);
+  top: 50%;
+  left: 37%;
+  z-index: 105;
+`
+
+export const BackTopRightLeg = styled.div`
+  position: absolute;
+  width: 10px;
+  height: 95px;
+  background-color: #B8ABB0;
+  transform: rotate(-37.5deg);
+  top: 48%;
+  left: 30%;
+  z-index: 105;
+`
+
+export const BackTopLeftLeg = styled.div`
+  position: absolute;
+  width: 10px;
+  height: 95px;
+  background-color: #B8ABB0;
+  transform: rotate(37.5deg);
+  top: 48%;
+  right: 30%;
   z-index: 105;
 `
 
@@ -138,7 +181,7 @@ export const ObservationDeck = styled.div`
   position: absolute;
   width: 100%;
   height: 10px;
-  top: 44%;
+  top: 44.5%;
   background-color: #B8ABB0;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;

@@ -14,6 +14,11 @@ const SkyScraper = () => {
 
       <styles.CenterSpire />
 
+      <styles.FrontTopRightLeg />
+      <styles.FrontTopLeftLeg />
+      <styles.BackTopRightLeg />
+      <styles.BackTopLeftLeg />
+
       <styles.BaseUpperTower />
       <styles.UpperTower />
       <styles.RoofUpperTower />
