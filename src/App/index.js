@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 // ?? Pages
 import GamePage from '../pages/GamePage';
 import Landing from '../pages/Landing'
-// import { Score } from '../components'
+import { Background } from '../components'
 
 // ?? Styles
 import './App.scss'
@@ -31,6 +31,7 @@ const App = () => {
   }
   return (
     <div className='App'>
+      <Background.Layer1 />4
       <h1 className="App__title">
         <span className="App__title--first">MARS</span>SWEEPER
       </h1>
