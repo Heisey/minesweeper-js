@@ -11,12 +11,13 @@ import {bottomLeftAnimate, topRightAnimate} from '../animations'
 export const Base = styled.div`
   height: 100px;
   width: 420px;
-  background-color: greenyellow;
+  background: rgb(147,244,67);
+background: radial-gradient(circle, rgba(147,244,67,1) 23%, rgba(231,42,44,1) 66%);
   margin: 0 auto 50px auto;
   border-radius:30% 20% 30% 30px;
   padding:20px 30px;
   position: relative;
-  font-family: 'Butcherman', cursive;
+  font-family: 'Creepster', cursive;
   font-size: 50px;
   line-height: 70px;
   text-align: center;
@@ -32,7 +33,7 @@ export const Base = styled.div`
     border-top:1px solid transparent;
     border-right:1px solid transparent;
     border-bottom:1px solid transparent;
-    border-left:4px solid greenyellow;
+    border-left:4px solid #E72A2C;
     border-radius:60%;
     transform:rotate(-50grad);
   }
@@ -46,7 +47,7 @@ export const Base = styled.div`
     width:23px;
     height:62px;
     border-top:1px solid transparent;
-    border-right:4px solid greenyellow;
+    border-right:4px solid #E72A2C;
     border-bottom:1px solid transparent;
     border-left:5px solid transparent;
     border-radius:60%;

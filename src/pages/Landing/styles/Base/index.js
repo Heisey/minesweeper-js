@@ -87,7 +87,7 @@ export const LandingGameMenuButton = styled.div`
   position: absolute;
   transition: all;
   transition-delay: 0.3s;
-  left: ${props => !props.end ? '50%' : '0'};
+  left: ${props => !props.end ? '-10%' : '-20%'};
   animation-name: ${props => !props.end && gameButtonAnimation};
   animation-duration: ${props => !props.end && '0.4s'};
   animation-fill-mode: ${props => !props.end && 'backwards'};
@@ -99,7 +99,7 @@ export const LandingScoreMenuButton = styled.div`
   position: absolute;
   transition: all;
   transition-delay: 0.3s;
-  right: ${props => !props.end ? '50%' : '0'};
+  right: ${props => !props.end ? '50%' : '-20%'};
   animation-name: ${props => !props.end && scoreButtonAnimation};
   animation-duration: ${props => !props.end && '0.4s'};
   animation-fill-mode: ${props => !props.end && 'backwards'};

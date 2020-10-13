@@ -1,19 +1,20 @@
 import styled from 'styled-components/macro'
 
 export const NeonSign = styled.div`
-  background-color: rgba(255, 255, 255, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.2); */
   position: absolute;
-  height: 600px;
-  width: 800px;
+  height: 400px;
+  width: 400px;
   z-index: 215;
-  bottom: 0;
-  right: 20%;
+  bottom: 8%;
+  right: 18%;
   perspective: 800px;
   perspective-origin: 50% 50px;
+  transform: scale(0.5);
+  z-index: 209;
 `
 
 export const Board = styled.div`
-background-color: blue;
   position: relative;
   width: 200px;
   transform-style: preserve-3d;
@@ -36,6 +37,8 @@ export const BoardFront = styled.div`
   color: #00f9ff;
   position: relative;
   animation: highlight 2s infinite linear;
+  top: 0;
+  left: 0;
 
   &::before {
   content: "";
@@ -84,5 +87,43 @@ export const BoardFront = styled.div`
     -184px 99px 0 0 white, -185px 99px 0 -1px white, -186px 100px 0 -2px white, -187px 100px 0 -2px white, -187px 100px 3px -2px grey, 
     -184px 71px 0 0 white, -185px 71px 0 -1px white, -186px 72px 0 -2px white, -187px 72px 0 -2px white, -187px 72px 3px -2px grey, 
     -184px 43px 0 0 white, -185px 43px 0 -1px white, -186px 44px 0 -2px white, -187px 44px 0 -2px white, -187px 44px 3px -2px grey;
-}
+  }
+`
+
+export const BoardFrontRightSide = styled.div`
+  position: absolute;
+  top: -21.5%;
+  right: 142%;
+  transform: rotateY(45deg) translateX(850px);
+  transform-origin: center top;
+  width: 50px;
+  height: 321px;
+  background-color: #bab8b8;
+`
+
+const leg = styled.div`
+  position: absolute;
+  box-shadow: inset 0 0 15px #000000;
+  background-color: grey;
+`
+
+export const Legs = styled.div`
+  width: 200px;
+  transform-style: preserve-3d;
+  margin: 0 auto;
+  transform-origin: 0 100px;
+  transform: rotateY(-15deg);
+`
+
+export const LeftLegSide = styled(leg)`
+  transform: rotateY(135deg) translateZ(-200px) ;
+  transform-origin: center left;
+  width: 20px;
+  height: 200px;
+`
+
+export const LeftLegFront = styled(leg)`
+  transform: translateZ(-30px) rotateX(180deg) translateY(0px) translateX(200px);
+  width: 30px;
+  height: 200px;
 `

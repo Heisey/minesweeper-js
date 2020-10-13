@@ -11,7 +11,7 @@ import { connect } from 'react-redux'
 import { actions } from '../../redux'
 
 // ?? Components
-// import { SkyScraper } from '../../components'
+import { Buttons } from '../../components'
 import MenuButton from '../../components/MenuButton'
 
 // ?? Styles
@@ -58,19 +58,25 @@ const Landing = (props) => {
       <styles.LandingGameMenuButton
         end={primaryGameMenu}
       >
-        <MenuButton 
+        <Buttons.Main 
+          text='PLAY'
+        />
+        {/* <MenuButton 
           clickHandler={handlePrimaryGameMenu}
           text='start'
-        />
+        /> */}
       </styles.LandingGameMenuButton>
     
       <styles.LandingScoreMenuButton
         end={primaryGameMenu}
       >
-        <MenuButton 
+        <Buttons.Main 
+          text="scores"
+        />
+        {/* <MenuButton 
           text='scores'
           clickHandler={() => 'need to do something'}
-        />
+        /> */}
       </styles.LandingScoreMenuButton>
 
       {difficultyGameMenu && (

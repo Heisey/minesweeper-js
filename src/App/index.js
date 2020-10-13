@@ -33,7 +33,7 @@ const App = () => {
     <div className='App'>
       <Background.Scenery />
       <h1 className="App__title">
-        <span className="App__title--first">MARS</span>SWEEPER
+        <span className="App__title--first">MARS SWEEPER</span>
       </h1>
       {showLanding && ( 
         <div className='App__landing'>

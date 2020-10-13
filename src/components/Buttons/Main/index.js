@@ -10,12 +10,12 @@ import { Base } from './styles'
 
 const Button = (props) => {
 
-  const { clickHandler } = props
+  const { clickHandler, text } = props
   return (
     <Base
       onClick={clickHandler}
     >
-      PLAY AGAIN?
+      {text}
     </Base>
   )
 }

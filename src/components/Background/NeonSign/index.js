@@ -7,8 +7,12 @@ const NeonSign = () => {
     <styles.NeonSign>
       <styles.Board>
         <styles.BoardFront />
+        <styles.BoardFrontRightSide />
       </styles.Board>
-      puppies
+      <styles.Legs>
+        <styles.LeftLegFront />
+        {/* <styles.LeftLegSide /> */}
+      </styles.Legs>
     </styles.NeonSign>
   )
 }

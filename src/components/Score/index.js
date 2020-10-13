@@ -6,7 +6,7 @@
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React from 'react'
 
-import Button from './Button'
+// import Button from './Button'
 
 import { 
   Base, 
@@ -27,9 +27,9 @@ const Score = (props) => {
           <Title>WON</Title>
         </TitleContainer>
         <Points>{pointsScored} pts</Points>
-        <Button 
+        {/* <Button 
           clickHandler={restartGame}
-        />
+        /> */}
       </Container>
     </Base>
   )
