@@ -16,6 +16,7 @@ import MenuButton from '../../components/MenuButton'
 
 // ?? Styles
 import styles from './styles'
+import Button from '../../components/Game/Button'
 
 const Landing = (props) => {
   // ~~ Parent Props
@@ -60,6 +61,7 @@ const Landing = (props) => {
       >
         <Buttons.Main 
           text='PLAY'
+          clickHandler={handlePrimaryGameMenu}
         />
         {/* <MenuButton 
           clickHandler={handlePrimaryGameMenu}
@@ -82,26 +84,38 @@ const Landing = (props) => {
       {difficultyGameMenu && (
         <>
           <styles.LandingGameMenuEasyButton>
-            <MenuButton 
+            <Buttons.Main 
               text='easy'
               clickHandler={handleEasyGame}
             />
+            {/* <MenuButton 
+              text='easy'
+              clickHandler={handleEasyGame}
+            /> */}
           </styles.LandingGameMenuEasyButton>
 
           <styles.LandingGameMenuMediumButton>
-            <MenuButton 
+            <Buttons.Main
               text='medium'
               clickHandler={handleMediumGame}
             />
+            {/* <MenuButton 
+              text='medium'
+              clickHandler={handleMediumGame}
+            /> */}
           </styles.LandingGameMenuMediumButton>
 
           <styles.LandingGameMenuHardButton
             end={primaryGameMenu}
           >
-            <MenuButton 
+            <Buttons.Main
+              text='hard'
+              clickHandler={handleHardGame} 
+            />
+            {/* <MenuButton 
               text='hard'
               clickHandler={handleHardGame}
-            />
+            /> */}
           </styles.LandingGameMenuHardButton>
         </>
       )}

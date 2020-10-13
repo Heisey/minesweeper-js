@@ -12,7 +12,7 @@ export const Base = styled.div`
   height: 100px;
   width: 420px;
   background: rgb(147,244,67);
-background: radial-gradient(circle, rgba(147,244,67,1) 23%, rgba(231,42,44,1) 66%);
+  background: radial-gradient(circle, rgba(147,244,67,1) 23%, rgba(231,42,44,1) 66%);
   margin: 0 auto 50px auto;
   border-radius:30% 20% 30% 30px;
   padding:20px 30px;

@@ -34,7 +34,6 @@ export const BoardFront = styled.div`
   width: 400px;
   height: 180px;
   font-size: 5.5em;
-  color: #00f9ff;
   position: relative;
   animation: highlight 2s infinite linear;
   top: 0;

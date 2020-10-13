@@ -2,18 +2,18 @@ import styled, { keyframes } from 'styled-components'
 
 const gameButtonAnimation = keyframes`
   0% {
-    left: 0;
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
+    z-index: 201; 
+    bottom: 45%;
+    /* opacity: 1; */
   }
 
   80% {
-    left: 50%;
+    bottom: 0;
+
   }
 
   100% {
+    z-index: 199; 
     display: none;
   }
 `
@@ -22,22 +22,6 @@ const scoreButtonAnimation = keyframes`
   0% {
     right: 0;
     opacity: 1;
-  }
-
-  25% {
-    opacity: 0.5;
-  }
-
-  40% {
-    right: 25%;
-  }
-
-  50% {
-    opacity: 0;
-  }
-
-  80% {
-    right: 50%;
   }
 
   100% {
@@ -87,7 +71,8 @@ export const LandingGameMenuButton = styled.div`
   position: absolute;
   transition: all;
   transition-delay: 0.3s;
-  left: ${props => !props.end ? '-10%' : '-20%'};
+  bottom: 45%;
+  left: -20%;
   animation-name: ${props => !props.end && gameButtonAnimation};
   animation-duration: ${props => !props.end && '0.4s'};
   animation-fill-mode: ${props => !props.end && 'backwards'};
@@ -99,8 +84,9 @@ export const LandingScoreMenuButton = styled.div`
   position: absolute;
   transition: all;
   transition-delay: 0.3s;
-  right: ${props => !props.end ? '50%' : '-20%'};
-  animation-name: ${props => !props.end && scoreButtonAnimation};
+  bottom: 45%;
+  right: -20%;
+  animation-name: ${props => !props.end && gameButtonAnimation};
   animation-duration: ${props => !props.end && '0.4s'};
   animation-fill-mode: ${props => !props.end && 'backwards'};
   transform: ${props => !props.end && 'translateX(-50%)'};
@@ -109,17 +95,26 @@ export const LandingScoreMenuButton = styled.div`
 
 export const LandingGameMenuEasyButton = styled.div`
   position: absolute;
-  top: ${props => props.animate ? '50%' : '25%'};
-  animation-name: ${gameEasyButtonAnimation};
+  left: -30%;
+  top: 40%;
+  transform: scale(0.7);
+  animation-name: ${gameButtonAnimation};
   animation-duration: 1s;
 `
 
 export const LandingGameMenuMediumButton = styled.div`
   position: absolute;
-  top: 50%;
+  top: 40%;
+  transform: scale(0.7);
+  animation-name: ${gameButtonAnimation};
+  animation-duration: 1s;
 `
 
 export const LandingGameMenuHardButton = styled.div`
   position: absolute;
-  top: ${props => props.animate ? '50%' : '75%'};
+  top: 40%;
+  right: -30%;
+  transform: scale(0.7);
+  animation-name: ${gameButtonAnimation};
+  animation-duration: 1s;
 `
