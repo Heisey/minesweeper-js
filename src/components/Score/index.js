@@ -5,8 +5,7 @@
 
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React from 'react'
-
-// import Button from './Button'
+import { Buttons } from '../'
 
 import { 
   Base, 
@@ -27,9 +26,10 @@ const Score = (props) => {
           <Title>WON</Title>
         </TitleContainer>
         <Points>{pointsScored} pts</Points>
-        {/* <Button 
+        <Buttons.Main 
           clickHandler={restartGame}
-        /> */}
+          text='PLAY AGAIN'
+        />
       </Container>
     </Base>
   )

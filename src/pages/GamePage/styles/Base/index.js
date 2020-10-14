@@ -9,6 +9,7 @@ export const GamePage = styled.div`
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  z-index: 300;
 `
 
 export const GamePageButtons = styled.div`
