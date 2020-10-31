@@ -60,7 +60,7 @@ const GamePage = (props) => {
   }, [gameTime, gameStarted, time])
 
   useEffect(() => {
-    // generateBoard(gameParams)
+    generateBoard(gameParams)
   }, [gameParams, generateBoard])
 
   useEffect(() => {
@@ -206,11 +206,11 @@ const GamePage = (props) => {
         /> */}
       </styles.GamePageButtons>
 
-      {/* <Game.Board 
+      <Game.Board 
         board={gameBoard}
         tileClickEvent={handleTileClick}
         flagTile={handleFlagTile}
-      /> */}
+      />
 
       <styles.GamePageInfoBoxes>
         {/* // ?? Mines Left */}

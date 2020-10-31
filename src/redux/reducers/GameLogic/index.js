@@ -18,6 +18,7 @@ export default (state = initState, action) => {
       return {...state, time: action.payload}
 
     case keys.GAME_PARAMS:
+      console.log('check please')
       return {...state, gameParams: action.payload}
 
     case keys.GENERATE_BOARD:
