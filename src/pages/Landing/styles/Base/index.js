@@ -1,22 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-
-const gameButtonAnimation = keyframes`
-  0% {
-    z-index: 201; 
-    bottom: 45%;
-    /* opacity: 1; */
-  }
-
-  80% {
-    bottom: 0;
-
-  }
-
-  100% {
-    z-index: 199; 
-    display: none;
-  }
-`
+import animations from '../../animations'
 
 const scoreButtonAnimation = keyframes`
   0% {
@@ -56,6 +39,14 @@ const gameEasyButtonAnimation = keyframes`
   }
 `
 
+const checkForEndProp = prop => {
+  if (prop === 'true') {
+    return true
+  }
+
+  return false
+}
+
 export const Landing = styled.div`
   height: 100%;
   width: 40%;
@@ -73,11 +64,11 @@ export const LandingGameMenuButton = styled.div`
   transition-delay: 0.3s;
   bottom: 45%;
   left: -20%;
-  animation-name: ${props => !props.end && gameButtonAnimation};
-  animation-duration: ${props => !props.end && '0.4s'};
-  animation-fill-mode: ${props => !props.end && 'backwards'};
-  transform: ${props => !props.end && 'translateX(-50%)'};
-  opacity: ${props => !props.end && '0'};
+  animation-name: ${props => !checkForEndProp(props.end) && animations.gameButtonAnimation};
+  animation-duration: ${props => !checkForEndProp(props.end) && '0.4s'};
+  animation-fill-mode: ${props => !checkForEndProp(props.end) && 'backwards'};
+  transform: ${props => !checkForEndProp(props.end) && 'translateX(-50%)'};
+  opacity: ${props => !checkForEndProp(props.end) && '0'};
 `
 
 export const LandingScoreMenuButton = styled.div`
@@ -86,7 +77,7 @@ export const LandingScoreMenuButton = styled.div`
   transition-delay: 0.3s;
   bottom: 45%;
   right: -20%;
-  animation-name: ${props => !props.end && gameButtonAnimation};
+  animation-name: ${props => !props.end && animations.gameButtonAnimation};
   animation-duration: ${props => !props.end && '0.4s'};
   animation-fill-mode: ${props => !props.end && 'backwards'};
   transform: ${props => !props.end && 'translateX(-50%)'};
@@ -98,7 +89,7 @@ export const LandingGameMenuEasyButton = styled.div`
   left: -30%;
   top: 40%;
   transform: scale(0.7);
-  animation-name: ${gameButtonAnimation};
+  animation-name: ${animations.gameButtonAnimation};
   animation-duration: 1s;
 `
 
@@ -106,7 +97,7 @@ export const LandingGameMenuMediumButton = styled.div`
   position: absolute;
   top: 40%;
   transform: scale(0.7);
-  animation-name: ${gameButtonAnimation};
+  animation-name: ${animations.gameButtonAnimation};
   animation-duration: 1s;
 `
 
@@ -115,6 +106,6 @@ export const LandingGameMenuHardButton = styled.div`
   top: 40%;
   right: -30%;
   transform: scale(0.7);
-  animation-name: ${gameButtonAnimation};
+  animation-name: ${animations.gameButtonAnimation};
   animation-duration: 1s;
 `

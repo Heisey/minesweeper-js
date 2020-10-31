@@ -5,8 +5,7 @@
 
 // ??????????????????????? Vendor Modules ?????????????????????????
 import styled from 'styled-components'
-import {bottomLeftAnimate, topRightAnimate} from '../animations'
-
+import animations from '../../animations'
 
 export const Base = styled.div`
   height: 100px;
@@ -63,11 +62,11 @@ export const Base = styled.div`
     }
 
     &:before {
-      animation-name: ${bottomLeftAnimate};
+      animation-name: ${animations.bottomLeftAnimate};
     }
 
     &:after {
-      animation-name: ${topRightAnimate};
+      animation-name: ${animations.topRightAnimate};
     }
   }
 `

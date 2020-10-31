@@ -12,15 +12,11 @@ import { actions } from '../../redux'
 
 // ?? Components
 import { Buttons } from '../../components'
-import MenuButton from '../../components/MenuButton'
 
 // ?? Styles
 import styles from './styles'
-import Button from '../../components/Game/Button'
 
 const Landing = (props) => {
-  // ~~ Parent Props
-  const { handleShowGame } = props
 
   // ~~ Redux Props
   const { generateParams } = props
@@ -39,17 +35,14 @@ const Landing = (props) => {
   }
 
   const handleHardGame = () => {
-    handleShowGame()
     generateParams('hard')
   }
 
   const handleMediumGame = () => {
-    handleShowGame()
     generateParams('medium')
   }
 
   const handleEasyGame = () => {
-    handleShowGame()
     generateParams('easy')
   }
 
@@ -57,28 +50,20 @@ const Landing = (props) => {
     <styles.Landing>
     {/* <SkyScraper /> */}
       <styles.LandingGameMenuButton
-        end={primaryGameMenu}
+        end={`${primaryGameMenu}`}
       >
         <Buttons.Main 
           text='PLAY'
           clickHandler={handlePrimaryGameMenu}
         />
-        {/* <MenuButton 
-          clickHandler={handlePrimaryGameMenu}
-          text='start'
-        /> */}
       </styles.LandingGameMenuButton>
     
       <styles.LandingScoreMenuButton
-        end={primaryGameMenu}
+        // end={primaryGameMenu}
       >
         <Buttons.Main 
           text="scores"
         />
-        {/* <MenuButton 
-          text='scores'
-          clickHandler={() => 'need to do something'}
-        /> */}
       </styles.LandingScoreMenuButton>
 
       {difficultyGameMenu && (
@@ -88,10 +73,6 @@ const Landing = (props) => {
               text='easy'
               clickHandler={handleEasyGame}
             />
-            {/* <MenuButton 
-              text='easy'
-              clickHandler={handleEasyGame}
-            /> */}
           </styles.LandingGameMenuEasyButton>
 
           <styles.LandingGameMenuMediumButton>
@@ -99,23 +80,15 @@ const Landing = (props) => {
               text='medium'
               clickHandler={handleMediumGame}
             />
-            {/* <MenuButton 
-              text='medium'
-              clickHandler={handleMediumGame}
-            /> */}
           </styles.LandingGameMenuMediumButton>
 
           <styles.LandingGameMenuHardButton
-            end={primaryGameMenu}
+            // end={primaryGameMenu}
           >
             <Buttons.Main
               text='hard'
               clickHandler={handleHardGame} 
             />
-            {/* <MenuButton 
-              text='hard'
-              clickHandler={handleHardGame}
-            /> */}
           </styles.LandingGameMenuHardButton>
         </>
       )}

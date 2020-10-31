@@ -1,6 +1,6 @@
 import {keyframes} from 'styled-components'
 
-export const bottomLeftAnimate = keyframes`
+const bottomLeftAnimate = keyframes`
   0% {
     left: -1px;
     bottom: -1rem;
@@ -17,7 +17,7 @@ export const bottomLeftAnimate = keyframes`
   }
 `
 
-export const topRightAnimate = keyframes`
+const topRightAnimate = keyframes`
   0% {
     right: 5px;
     top: -1.8rem;
@@ -33,3 +33,8 @@ export const topRightAnimate = keyframes`
     top: -1.8rem;
   }
 `
+
+export default {
+  bottomLeftAnimate,
+  topRightAnimate
+}
