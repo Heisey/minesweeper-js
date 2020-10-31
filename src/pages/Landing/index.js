@@ -5,6 +5,7 @@
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? redux
@@ -16,10 +17,12 @@ import { Buttons } from '../../components'
 // ?? Styles
 import styles from './styles'
 
+import utilties from './utilities'
+
 const Landing = (props) => {
 
   // ~~ Redux Props
-  const { generateParams } = props
+  // const { generateParams } = props
 
   // ~~ contained component state
   const [primaryGameMenu, primaryGameMenuHandler] = useState(true)
@@ -34,17 +37,21 @@ const Landing = (props) => {
     }, 300)
   }
 
-  const handleHardGame = () => {
-    generateParams('hard')
-  }
+  // const generateParamsHandler = param => {
+  //   generateParams(param)
+  // }
 
-  const handleMediumGame = () => {
-    generateParams('medium')
-  }
+  // const handleHardGame = () => {
+  //   generateParams('hard')
+  // }
 
-  const handleEasyGame = () => {
-    generateParams('easy')
-  }
+  // const handleMediumGame = () => {
+  //   generateParams('medium')
+  // }
+
+  // const handleEasyGame = () => {
+  //   generateParams('easy')
+  // }
 
   return (
     <styles.Landing>
@@ -68,16 +75,20 @@ const Landing = (props) => {
       {difficultyGameMenu && (
         <>
           <styles.LandingGameMenuEasyButton>
-            <Buttons.Main 
-              text='easy'
-              clickHandler={handleEasyGame}
-            />
+            <Link
+              to='/game'
+            >
+              <Buttons.Main 
+                text='easy'
+                clickHandler={utilties.handleEasyGame}
+              />
+            </Link>
           </styles.LandingGameMenuEasyButton>
 
           <styles.LandingGameMenuMediumButton>
             <Buttons.Main
               text='medium'
-              clickHandler={handleMediumGame}
+              clickHandler={utilties.handleMediumGame}
             />
           </styles.LandingGameMenuMediumButton>
 
@@ -86,7 +97,7 @@ const Landing = (props) => {
           >
             <Buttons.Main
               text='hard'
-              clickHandler={handleHardGame} 
+              clickHandler={utilties.handleHardGame} 
             />
           </styles.LandingGameMenuHardButton>
         </>
@@ -96,5 +107,5 @@ const Landing = (props) => {
 }
 
 export default connect(null, {
-  generateParams: actions.generateParams
+  // generateParams: actions.generateParams
 })(Landing)

@@ -28,7 +28,8 @@ const Board = (props) => {
 
   return (
     <styles.Base
-      difficulty={gameParams.difficulty}
+      // difficulty={gameParams.difficulty}
+      difficulty='easy'
     >
       {board.map(row => row.map(tileObj => (
         <Game.Tile 

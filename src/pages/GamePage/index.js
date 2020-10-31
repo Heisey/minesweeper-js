@@ -6,6 +6,7 @@
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? redux
@@ -38,8 +39,8 @@ const GamePage = (props) => {
     updateBoard
   } = props
   
-  const [bombsGuessed, bombsGuessedHandler] = useState(gameParams.bombs)
-  const [bombsLeft, bombsLeftHandler] = useState(gameParams.bombs)
+  const [bombsGuessed, bombsGuessedHandler] = useState(40)
+  const [bombsLeft, bombsLeftHandler] = useState(40)
 
   
   // ~~ contained component state
@@ -59,7 +60,7 @@ const GamePage = (props) => {
   }, [gameTime, gameStarted, time])
 
   useEffect(() => {
-    generateBoard(gameParams)
+    // generateBoard(gameParams)
   }, [gameParams, generateBoard])
 
   useEffect(() => {
@@ -185,11 +186,14 @@ const GamePage = (props) => {
       />}
       <styles.GamePageButtons>
         {/* // ?? Go Back to Main Menu */}
-        <Game.Button 
-          icon="arrow-left"
-          buttonClickEvent={handleShowLanding}
-        />
-
+        <Link
+          to='/'
+        >
+          <Game.Button 
+            icon="arrow-left"
+            buttonClickEvent={handleShowLanding}
+          />
+        </Link>
         {/* // ?? Restart Game */}
         <Game.Button 
           icon="redo-alt"
@@ -202,11 +206,11 @@ const GamePage = (props) => {
         /> */}
       </styles.GamePageButtons>
 
-      <Game.Board 
+      {/* <Game.Board 
         board={gameBoard}
         tileClickEvent={handleTileClick}
         flagTile={handleFlagTile}
-      />
+      /> */}
 
       <styles.GamePageInfoBoxes>
         {/* // ?? Mines Left */}

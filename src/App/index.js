@@ -24,15 +24,18 @@ const App = () => {
         <span className="App__title--first">MARS SWEEPER</span>
       </h1>
       <Switch>
+        <Route
+          path='/game'
+        >
+          <GamePage />
+        </Route>
+
         <Route 
           path='/'
         >
           <Landing />
         </Route>
         
-        <Route>
-          <GamePage />
-        </Route>
       </Switch>
     </div>
   )
