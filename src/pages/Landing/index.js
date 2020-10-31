@@ -48,7 +48,6 @@ const Landing = (props) => {
 
   return (
     <styles.Landing>
-    {/* <SkyScraper /> */}
       <styles.LandingGameMenuButton
         end={`${primaryGameMenu}`}
       >
@@ -59,7 +58,7 @@ const Landing = (props) => {
       </styles.LandingGameMenuButton>
     
       <styles.LandingScoreMenuButton
-        // end={primaryGameMenu}
+        end={`${primaryGameMenu}`}
       >
         <Buttons.Main 
           text="scores"
@@ -83,7 +82,7 @@ const Landing = (props) => {
           </styles.LandingGameMenuMediumButton>
 
           <styles.LandingGameMenuHardButton
-            // end={primaryGameMenu}
+            end={`${primaryGameMenu}`}
           >
             <Buttons.Main
               text='hard'
