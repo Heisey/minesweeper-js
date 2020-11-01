@@ -6,7 +6,7 @@
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? redux
@@ -24,6 +24,10 @@ import styles from './styles'
 
 const GamePage = (props) => {
 
+  
+  const { difficulty } = useParams()
+
+
   const { handleShowLanding } = props
 
   const {
@@ -33,6 +37,7 @@ const GamePage = (props) => {
     gameTime,
     gameWon,
     generateBoard,
+    generateParams,
     hasWon,
     resetHasWon,
     time,
@@ -45,6 +50,10 @@ const GamePage = (props) => {
   
   // ~~ contained component state
   const [gameStarted, gameStartedHandler] = useState(false)
+
+  useEffect(() => {
+    generateParams(difficulty)
+  }, [])
 
   useEffect(() => {
     const timeIntervals = {}
@@ -60,6 +69,10 @@ const GamePage = (props) => {
   }, [gameTime, gameStarted, time])
 
   useEffect(() => {
+    if (gameParams === null) {
+      return
+    }
+
     generateBoard(gameParams)
   }, [gameParams, generateBoard])
 
@@ -189,16 +202,16 @@ const GamePage = (props) => {
         <Link
           to='/'
         >
-          <Game.Button 
+          {/* <Game.Button 
             icon="arrow-left"
             buttonClickEvent={handleShowLanding}
-          />
+          /> */}
         </Link>
         {/* // ?? Restart Game */}
-        <Game.Button 
+        {/* <Game.Button 
           icon="redo-alt"
           buttonClickEvent={restartGame}
-        />
+        /> */}
 
         {/* // ?? Show Game Instructions */}
         {/* <GameButton 
@@ -242,6 +255,7 @@ export default connect(mapStateTopProps, {
   gameLost: actions.gameLost,
   gameTime: actions.gameTime,
   generateBoard: actions.generateBoard,
+  generateParams: actions.generateParams,
   resetHasWon: actions.resetHasWon,
   updateBoard: actions.updateBoard
 })(GamePage)

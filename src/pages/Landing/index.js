@@ -17,8 +17,6 @@ import { Buttons } from '../../components'
 // ?? Styles
 import styles from './styles'
 
-// import utilties from './utilities'
-
 const Landing = (props) => {
 
   // ~~ Redux Props
@@ -38,15 +36,15 @@ const Landing = (props) => {
   }
 
   const handleHardGame = () => {
-    generateParams('hard')
+    // generateParams('hard')
   }
   
   const handleMediumGame = () => {
-    generateParams('medium')
+    // generateParams('medium')
   }
   
   const handleEasyGame = () => {
-    generateParams('easy')
+    // generateParams('easy')
   }
   
   return (
@@ -72,7 +70,7 @@ const Landing = (props) => {
         <>
           <styles.LandingGameMenuEasyButton>
             <Link
-              to='/game'
+              to='/game/easy'
             >
               <Buttons.Main 
                 text='easy'
@@ -83,7 +81,7 @@ const Landing = (props) => {
 
           <styles.LandingGameMenuMediumButton>
             <Link
-              to='/game'
+              to='/game/medium'
             >
               <Buttons.Main
                 text='medium'
@@ -96,7 +94,7 @@ const Landing = (props) => {
             end={`${primaryGameMenu}`}
           >
             <Link
-              to='/game'
+              to='/game/hard'
             >
               <Buttons.Main
                 text='hard'

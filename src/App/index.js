@@ -25,7 +25,7 @@ const App = () => {
       </h1>
       <Switch>
         <Route
-          path='/game'
+          path='/game/:difficulty'
         >
           <GamePage />
         </Route>

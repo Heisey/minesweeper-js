@@ -20,6 +20,7 @@ export const gameTime = (payload) => {
 }
 
 export const generateParams = (difficulty) => {
+  console.log('puppy check')
   const payload = gameLogic.generateGameParams(difficulty)
   return {
     type: keys.GAME_PARAMS,
