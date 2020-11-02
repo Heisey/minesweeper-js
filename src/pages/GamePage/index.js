@@ -22,13 +22,11 @@ import { gameLogic, scoreLogic } from '../../lib'
 // ?? Styles
 import styles from './styles'
 
+// import utilities from './utilities'
+
 const GamePage = (props) => {
 
-  
   const { difficulty } = useParams()
-
-
-  const { handleShowLanding } = props
 
   const {
     gameBoard,
@@ -43,7 +41,7 @@ const GamePage = (props) => {
     time,
     updateBoard
   } = props
-  
+
   const [bombsGuessed, bombsGuessedHandler] = useState(40)
   const [bombsLeft, bombsLeftHandler] = useState(40)
 
@@ -53,7 +51,7 @@ const GamePage = (props) => {
 
   useEffect(() => {
     generateParams(difficulty)
-  }, [])
+  }, [difficulty, generateParams])
 
   useEffect(() => {
     const timeIntervals = {}
@@ -202,16 +200,16 @@ const GamePage = (props) => {
         <Link
           to='/'
         >
-          {/* <Game.Button 
+          <Game.Button 
             icon="arrow-left"
-            buttonClickEvent={handleShowLanding}
-          /> */}
+            // buttonClickEvent={handleShowLanding}
+          />
         </Link>
         {/* // ?? Restart Game */}
-        {/* <Game.Button 
+        <Game.Button 
           icon="redo-alt"
           buttonClickEvent={restartGame}
-        /> */}
+        />
 
         {/* // ?? Show Game Instructions */}
         {/* <GameButton 

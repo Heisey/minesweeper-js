@@ -4,12 +4,10 @@
 
 // ??????????????????????? Vendor Modules ?????????????????????????
 import React, { useState } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 // ???????????????????????? File Modules ??????????????????????????
 // ?? redux
-import { actions } from '../../redux'
 
 // ?? Components
 import { Buttons } from '../../components'
@@ -17,10 +15,9 @@ import { Buttons } from '../../components'
 // ?? Styles
 import styles from './styles'
 
-const Landing = (props) => {
+const Landing = () => {
 
   // ~~ Redux Props
-  const { generateParams } = props
 
   // ~~ contained component state
   const [primaryGameMenu, primaryGameMenuHandler] = useState(true)
@@ -36,15 +33,12 @@ const Landing = (props) => {
   }
 
   const handleHardGame = () => {
-    // generateParams('hard')
   }
   
   const handleMediumGame = () => {
-    // generateParams('medium')
   }
   
   const handleEasyGame = () => {
-    // generateParams('easy')
   }
   
   return (
@@ -108,6 +102,4 @@ const Landing = (props) => {
   )
 }
 
-export default connect(null, {
-  generateParams: actions.generateParams
-})(Landing)
+export default Landing
